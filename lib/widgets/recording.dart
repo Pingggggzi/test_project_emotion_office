@@ -23,6 +23,9 @@ class _RecordingState extends State<Recording> {
       source: ImageSource.camera,
     );
 
+    File? imageFile = File(theImage!.path);
+    return theImage;
+
     if (theImage != null) {
       setState(() {
         imageFile = theImage as File;
@@ -35,6 +38,9 @@ class _RecordingState extends State<Recording> {
       source: ImageSource.gallery,
     );
 
+    File? imageFile = File(theImage!.path);
+    return theImage;
+
     if (theImage != null) {
       setState(() {
         imageFile = theImage as File;
@@ -44,6 +50,9 @@ class _RecordingState extends State<Recording> {
 
   _videoPic() async {
     final XFile? theVid = await _picker.pickVideo(source: ImageSource.gallery);
+
+    File? videoFile = File(theVid!.path);
+    return theVid;
 
     if (theVid != null) {
       setState(() {
@@ -55,6 +64,9 @@ class _RecordingState extends State<Recording> {
 
   _record() async {
     final XFile? theVid = await _picker.pickVideo(source: ImageSource.camera);
+
+    File? videoFile = File(theVid!.path);
+    return theVid;
 
     if (theVid != null) {
       setState(() {
