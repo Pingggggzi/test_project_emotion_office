@@ -6,6 +6,9 @@ import 'package:test_project_emotion/widgets/changescreen.dart';
 import 'package:test_project_emotion/widgets/mybutton.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 import 'package:test_project_emotion/widgets/passwordtextformField.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' show json;
 
 class SignUp extends StatefulWidget {
   @override
@@ -30,7 +33,36 @@ bool isLoading = false;
 
 class _SignUpState extends State<SignUp> {
   String? valueChoose;
-  List listItem = ['Condidate', 'Employer'];
+  List listItem = ['Candidate', 'Employer'];
+
+  Future register() async {
+    var url = Uri.parse('http://10.113.64.27/register.php');
+    var response = await http.post(url, body: {
+      "username": email.text,
+      "password": password.text,
+    });
+
+    var data = json.decode(response.body);
+    if (data == "Error") {
+      Fluttertoast.showToast(
+          msg: "This user alrealy exit!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    } else {
+      Fluttertoast.showToast(
+          msg: "Registration Succesfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
 
   void submit() async {
 //   //   UserCredential result;
@@ -47,7 +79,7 @@ class _SignUpState extends State<SignUp> {
 //   //   "FirstName": firstName.text,
 //   //   "lastName": lastName.text,
 //   //   "UserId": result.user!.uid,
-//   //   "Role": isCondidate == true ? "Condidate" : "Employer",
+//   //   "Role": isCandidate == true ? "Candidate" : "Employer",
 //   // });
     } on PlatformException catch (error) {
       var message = "Please Check Your Internet Connection ";
@@ -81,7 +113,7 @@ class _SignUpState extends State<SignUp> {
     // "ConfirmationPassword": confirmationPassword.text,
 //       "FirstName": firstName.text,
     // "LastName":lastName.text,
-    // "Role": isCondidate == true ? "Condidate" : "Employer",
+    // "Role": isCandidate == true ? "Candidate" : "Employer",
 //       "UserId": result.user.uid,
 //     });
     Navigator.of(context)
@@ -94,6 +126,7 @@ class _SignUpState extends State<SignUp> {
   void vaildation() async {
     if (email.text.isEmpty &&
         password.text.isEmpty &&
+        confirmationPassword.text.isEmpty &&
         firstName.text.isEmpty &&
         lastName.text.isEmpty) {
       _scaffoldKey.currentState!.showSnackBar(
@@ -131,7 +164,7 @@ class _SignUpState extends State<SignUp> {
           content: Text("Confirmation password is empty"),
         ),
       );
-    } else if (confirmationPassword != password) {
+    } else if (confirmationPassword.value != password.value) {
       _scaffoldKey.currentState!.showSnackBar(
         SnackBar(
           content: Text("The password confirmation does not match"),
@@ -182,7 +215,7 @@ class _SignUpState extends State<SignUp> {
           ),
           PasswordTextFormField(
             obserText: obserText,
-            controller: password,
+            controller: confirmationPassword,
             name: "Confirmation Password",
             onTap: () {
               FocusScope.of(context).unfocus();
@@ -258,6 +291,7 @@ class _SignUpState extends State<SignUp> {
               ? MyButton(
                   name: "SignUp",
                   onPressed: () {
+                    register();
                     vaildation();
                   },
                 )

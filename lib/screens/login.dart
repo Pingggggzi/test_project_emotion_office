@@ -7,6 +7,9 @@ import 'package:test_project_emotion/widgets/mytextformField.dart';
 import 'package:test_project_emotion/widgets/passwordtextformField.dart';
 import '../widgets/mybutton.dart';
 import 'homepage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' show json;
 
 class Login extends StatefulWidget {
   @override
@@ -27,6 +30,25 @@ final TextEditingController password = TextEditingController();
 bool obserText = true;
 
 class _LoginState extends State<Login> {
+  Future login() async {
+    var url = Uri.parse('http://10.113.64.27/login.php');
+    var response = await http.post(url, body: {
+      "username": email.text,
+      "password": password.text,
+    });
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      Fluttertoast.showToast(
+          msg: "Login Successfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
+
   void submit(context) async {
     try {
       setState(() {

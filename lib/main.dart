@@ -12,9 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder(builder: (context, snapshot) {
       return MaterialApp(
-        home: Recording(
-          title: 'Media Picker',
-        ),
+        home: Login(),
       );
     });
   }
