@@ -24,8 +24,8 @@ String p =
 RegExp regExp = new RegExp(p);
 final TextEditingController email = TextEditingController();
 final TextEditingController userName = TextEditingController();
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 final TextEditingController password = TextEditingController();
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 bool obserText = true;
 
@@ -40,6 +40,20 @@ class _LoginState extends State<Login> {
     if (data == "Success") {
       Fluttertoast.showToast(
           msg: "Login Successfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomePage(),
+          ));
+    } else {
+      Fluttertoast.showToast(
+          msg: "Login info incorrect!",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.CENTER,
           timeInSecForIosWeb: 1,
