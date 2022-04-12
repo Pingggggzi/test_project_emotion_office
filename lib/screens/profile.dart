@@ -22,438 +22,577 @@ class _ProfileState extends State<Profile> {
         title: Text("Profile Page"),
         backgroundColor: Color.fromRGBO(50, 75, 205, 1),
       ),
-      body: ListView(
-        children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage("images/User.jpg"),
-                ),
-                SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Username",
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      "email address",
-                      style: TextStyle(fontSize: 14, color: Colors.black),
-                    ),
-                  ],
-                ),
-              ],
+      body: Container(
+        decoration: BoxDecoration(color: Colors.grey[100]),
+        child: ListView(
+          children: [
+            Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: AssetImage("images/User.jpg"),
+                  ),
+                  SizedBox(width: 20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Username",
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        "email address",
+                        style: TextStyle(fontSize: 14, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'General Information',
-                      style: TextStyle(fontSize: 18),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'First Name',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Text(
+                            'General Information',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                    SizedBox(
-                      height: 5,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'First Name',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Last Name',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Birth Date',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Gender',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Marital',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'Last Name',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Text(
+                            'Contact',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                    SizedBox(
-                      height: 5,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'House Address',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Email Address',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Wechat',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Phone number',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'QQ',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'Birth Date',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Text(
+                            'Skills',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                    SizedBox(
-                      height: 5,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Advance',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Intermediate',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Basic',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'Gender',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Text(
+                            'Language',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                    SizedBox(
-                      height: 5,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Advance',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Intermediate',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Basic',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'Marital',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Expanded(
+                          child: Text(
+                            'About',
+                            style: TextStyle(fontSize: 18),
+                          ),
                         ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Preferred Work Location',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Expected Salary',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Contact',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'House Address',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Email Address',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Wechat',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Phone number',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'QQ',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+            SizedBox(
+              height: 10,
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Skills',
-                      style: TextStyle(fontSize: 18),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'Advance',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
+                        Expanded(
+                          child: Text(
+                            'Experience',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Intermediate',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Basic',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                  Row(),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Language',
-                      style: TextStyle(fontSize: 18),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    Row(
+                    child: Row(
                       children: [
-                        Text(
-                          'Advance',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
+                        Expanded(
+                          child: Text(
+                            'Education',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        Icon(Icons.edit_rounded),
                       ],
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Intermediate',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Basic',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                  Row(),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'About',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Preferred Work Location',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          'Expected Salary',
-                          textAlign: TextAlign.left,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ],
+            SizedBox(
+              height: 10,
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Experience',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Education',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      'Resume',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                  ],
-                ),
-                Row(),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'Project Videos',
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Resume',
                           style: TextStyle(fontSize: 18),
-                        )
+                        ),
+                      ),
+                      Icon(Icons.edit_rounded),
+                    ],
+                  ),
+                  Row(),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                'Project Videos',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ),
+                            Icon(Icons.edit_rounded),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Upload your demo project videos here.',
+                              style: TextStyle(color: Colors.red),
+                            )
+                          ],
+                        ),
                       ],
                     ),
-                    Row(),
-                  ],
-                ),
-              ],
+                  ),
+                  Row(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

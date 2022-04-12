@@ -20,6 +20,35 @@ class _SettingState extends State<Setting> {
         title: Text("Setting Page"),
         backgroundColor: Color.fromRGBO(50, 75, 205, 1),
       ),
+      body: Container(
+        decoration: BoxDecoration(color: Colors.grey[100]),
+        child: Column(
+          children: [
+            Row(),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Password Settings',
+                      textAlign: TextAlign.center,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Icon(Icons.arrow_right),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
