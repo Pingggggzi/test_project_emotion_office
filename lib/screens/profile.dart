@@ -75,7 +75,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -172,7 +182,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -269,7 +289,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -342,7 +372,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -415,7 +455,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -476,7 +526,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -510,7 +570,17 @@ class _ProfileState extends State<Profile> {
                             style: TextStyle(fontSize: 18),
                           ),
                         ),
-                        Icon(Icons.edit_rounded),
+                        IconButton(
+                          icon: Icon(Icons.edit_rounded),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text('General information'),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -538,7 +608,17 @@ class _ProfileState extends State<Profile> {
                           style: TextStyle(fontSize: 18),
                         ),
                       ),
-                      Icon(Icons.edit_rounded),
+                      IconButton(
+                        icon: Icon(Icons.edit_rounded),
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('General information'),
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
                   Row(),
@@ -573,7 +653,17 @@ class _ProfileState extends State<Profile> {
                                 style: TextStyle(fontSize: 18),
                               ),
                             ),
-                            Icon(Icons.edit_rounded),
+                            IconButton(
+                              icon: Icon(Icons.edit_rounded),
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    title: Text('General information'),
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                         Row(

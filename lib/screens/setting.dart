@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/homepage.dart';
+import 'package:test_project_emotion/screens/passwordsetting.dart';
 
 class Setting extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   @override
+  String? valueChoose;
+  List listItem = ['English', '中文'];
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,8 +28,46 @@ class _SettingState extends State<Setting> {
         decoration: BoxDecoration(color: Colors.grey[100]),
         child: Column(
           children: [
-            Row(),
             Container(
+              width: double.infinity,
+              height: 70,
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+              ),
+              child: Row(
+                children: [
+                  DropdownButton(
+                    hint: Text(
+                      "Language",
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 18,
+                      ),
+                    ),
+                    underline: SizedBox(),
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    value: valueChoose,
+                    onChanged: (val) {
+                      setState(() {
+                        valueChoose = val as String;
+                      });
+                    },
+                    items: listItem.map((valueItem) {
+                      return DropdownMenuItem(
+                        value: valueItem,
+                        child: Text(valueItem),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 70,
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -42,7 +84,13 @@ class _SettingState extends State<Setting> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Icon(Icons.arrow_right),
+                  IconButton(
+                    icon: Icon(Icons.arrow_right),
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (ctx) => Passwordsetting()));
+                    },
+                  )
                 ],
               ),
             ),

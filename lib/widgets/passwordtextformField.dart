@@ -27,7 +27,7 @@ class PasswordTextFormField extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        hintStyle: TextStyle(color: Colors.black),
+        hintStyle: TextStyle(color: Colors.grey[500]),
       ),
     );
   }
