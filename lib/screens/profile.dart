@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/signup.dart';
+import 'package:test_project_emotion/widgets/mytextformField.dart';
 
 import 'homepage.dart';
 
@@ -9,6 +10,11 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  String? valueChoose;
+  List listItem = ['Single', 'Married', 'Divorced', 'Widowed', 'Separated'];
+  final TextEditingController firstName = TextEditingController();
+  final TextEditingController lastName = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +88,143 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('General information'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'First Name',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: firstName,
+                                              name: 'Enter First Name'),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Last Name',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: lastName,
+                                              name: 'Enter Last Name'),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Birth Date',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Marital',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height: 60,
+                                      padding: EdgeInsets.only(left: 10),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          DropdownButton(
+                                            hint: Text(
+                                              "Marital",
+                                              style: TextStyle(
+                                                color: Colors.grey[600],
+                                                fontSize: 17,
+                                              ),
+                                            ),
+                                            underline: SizedBox(),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18),
+                                            value: valueChoose,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                valueChoose = val as String;
+                                              });
+                                            },
+                                            items: listItem.map((valueItem) {
+                                              return DropdownMenuItem(
+                                                value: valueItem,
+                                                child: Text(valueItem),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Gender',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -188,7 +331,7 @@ class _ProfileState extends State<Profile> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('General information'),
+                                title: Text('Contact'),
                               ),
                             );
                           },
@@ -295,7 +438,7 @@ class _ProfileState extends State<Profile> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('General information'),
+                                title: Text('Skills'),
                               ),
                             );
                           },
@@ -378,7 +521,7 @@ class _ProfileState extends State<Profile> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('General information'),
+                                title: Text('Language'),
                               ),
                             );
                           },
@@ -461,7 +604,7 @@ class _ProfileState extends State<Profile> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('General information'),
+                                title: Text('About'),
                               ),
                             );
                           },
@@ -532,7 +675,7 @@ class _ProfileState extends State<Profile> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('General information'),
+                                title: Text('Experience'),
                               ),
                             );
                           },
@@ -576,7 +719,7 @@ class _ProfileState extends State<Profile> {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: Text('General information'),
+                                title: Text('Education'),
                               ),
                             );
                           },
@@ -614,7 +757,7 @@ class _ProfileState extends State<Profile> {
                           showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: Text('General information'),
+                              title: Text('Resume'),
                             ),
                           );
                         },
@@ -659,7 +802,7 @@ class _ProfileState extends State<Profile> {
                                 showDialog(
                                   context: context,
                                   builder: (context) => AlertDialog(
-                                    title: Text('General information'),
+                                    title: Text('Project Videos'),
                                   ),
                                 );
                               },
