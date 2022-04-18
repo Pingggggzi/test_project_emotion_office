@@ -12,8 +12,19 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   String? valueChoose;
   List listItem = ['Single', 'Married', 'Divorced', 'Widowed', 'Separated'];
+  List listItem1 = ['Malaysia', 'China'];
+  List listItem11 = ['Johor', 'Kedah'];
+  List listItem21 = ['Anhui', 'Beijing'];
+  DateTime date = DateTime(2022, 04, 15);
+  String gender = 'male';
   final TextEditingController firstName = TextEditingController();
   final TextEditingController lastName = TextEditingController();
+  final TextEditingController houseAddress = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController phone = TextEditingController();
+  final TextEditingController linkedin = TextEditingController();
+  final TextEditingController facebook = TextEditingController();
+  final TextEditingController salary = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +163,41 @@ class _ProfileState extends State<Profile> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Row(),
+                                    Container(
+                                      width: 230,
+                                      padding: EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            '${date.year}/${date.month}/${date.day}',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          IconButton(
+                                            onPressed: () async {
+                                              DateTime? newDate =
+                                                  await showDatePicker(
+                                                context: context,
+                                                initialDate: date,
+                                                firstDate: DateTime(1900),
+                                                lastDate: DateTime(2100),
+                                              );
+
+                                              if (newDate == null) return;
+
+                                              setState(() => date = newDate);
+                                            },
+                                            icon: Icon(Icons.date_range),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     SizedBox(
                                       height: 10,
                                     ),
@@ -162,7 +207,7 @@ class _ProfileState extends State<Profile> {
                                           'Marital',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
-                                        )
+                                        ),
                                       ],
                                     ),
                                     SizedBox(
@@ -222,7 +267,36 @@ class _ProfileState extends State<Profile> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Row(),
+                                    Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Radio(
+                                              value: 'Male',
+                                              groupValue: gender,
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  gender = value.toString();
+                                                });
+                                              },
+                                            ),
+                                            Text('Male'),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Radio(
+                                              value: 'Female',
+                                              groupValue: gender,
+                                              onChanged: (value) {
+                                                gender = value.toString();
+                                              },
+                                            ),
+                                            Text('Female'),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
@@ -332,6 +406,132 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('Contact'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'House Address',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: houseAddress,
+                                              name: 'Enter House Address'),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Email Address',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: email,
+                                              name: 'Your Email Address'),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Phone Number',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: phone,
+                                              name: 'Enter Phone Number'),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'LinkedIn',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: linkedin,
+                                              name: 'Enter LinkedIn'),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Facebook',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                              controller: facebook,
+                                              name: 'Enter Facebook'),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -439,6 +639,31 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('Skills'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            '*Noted thatBasic(1-3), Intermediate (4-7), Advance (8-10)',
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.add),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -522,6 +747,31 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('Language'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            '*Noted thatBasic(1-3), Intermediate (4-7), Advance (8-10)',
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.add),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -605,6 +855,87 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('About'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Preferred Work Location',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height: 60,
+                                      padding: EdgeInsets.only(left: 10),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          DropdownButton(
+                                            hint: Text(
+                                              "Preferred Work Location",
+                                              style: TextStyle(
+                                                color: Colors.grey[600],
+                                                fontSize: 17,
+                                              ),
+                                            ),
+                                            underline: SizedBox(),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 18),
+                                            value: valueChoose,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                valueChoose = val as String;
+                                              });
+                                            },
+                                            items: listItem1.map((valueItem1) {
+                                              return DropdownMenuItem(
+                                                value: valueItem1,
+                                                child: Text(valueItem1),
+                                              );
+                                            }).toList(),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          'Expected Salary',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: 230,
+                                          child: MyTextFormField(
+                                            controller: salary,
+                                            name: 'Enter Expected Salary',
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -676,6 +1007,18 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('Experience'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.add),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -720,6 +1063,18 @@ class _ProfileState extends State<Profile> {
                               context: context,
                               builder: (context) => AlertDialog(
                                 title: Text('Education'),
+                                content: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.add),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -758,6 +1113,11 @@ class _ProfileState extends State<Profile> {
                             context: context,
                             builder: (context) => AlertDialog(
                               title: Text('Resume'),
+                              content: Row(
+                                children: [
+                                  Icon(Icons.upload),
+                                ],
+                              ),
                             ),
                           );
                         },
@@ -803,6 +1163,102 @@ class _ProfileState extends State<Profile> {
                                   context: context,
                                   builder: (context) => AlertDialog(
                                     title: Text('Project Videos'),
+                                    content: Column(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Container(
+                                              width: 240,
+                                              height: 80,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black26),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      '*Noted that larger files take a longer time to save.',
+                                                      style: TextStyle(
+                                                          color: Colors.red,
+                                                          fontSize: 15),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 240,
+                                              height: 80,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black26),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Column(
+                                                    children: [
+                                                      Icon(Icons.upload),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Column(
+                                          children: [
+                                            Container(
+                                              width: 240,
+                                              height: 80,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black26),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      '*If any video links should be uploaded here.',
+                                                      style: TextStyle(
+                                                          color: Colors.red,
+                                                          fontSize: 15),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 240,
+                                              height: 80,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.black26),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: Icon(Icons.add),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
