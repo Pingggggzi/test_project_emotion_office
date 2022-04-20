@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/signup.dart';
+import 'package:test_project_emotion/widgets/languageform.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 
 import 'homepage.dart';
@@ -17,6 +18,12 @@ class _ProfileState extends State<Profile> {
   List listItem21 = ['Anhui', 'Beijing'];
   DateTime date = DateTime(2022, 04, 15);
   String gender = 'male';
+  List<LanguageForm> listLanguage = [];
+  addLanguage() {
+    listLanguage.add(new LanguageForm());
+    setState(() {});
+  }
+
   final TextEditingController firstName = TextEditingController();
   final TextEditingController lastName = TextEditingController();
   final TextEditingController houseAddress = TextEditingController();
@@ -749,6 +756,11 @@ class _ProfileState extends State<Profile> {
                                 title: Text('Language'),
                                 content: Column(
                                   children: [
+                                    Flexible(
+                                        child: ListView.builder(
+                                            itemCount: listLanguage.length,
+                                            itemBuilder: (_, index) =>
+                                                listLanguage[index])),
                                     Row(
                                       children: [
                                         Expanded(
@@ -765,7 +777,9 @@ class _ProfileState extends State<Profile> {
                                     Row(
                                       children: [
                                         IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            addLanguage();
+                                          },
                                           icon: Icon(Icons.add),
                                         ),
                                       ],
