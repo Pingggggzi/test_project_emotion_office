@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
-// typedef Ondelete();
-
 class LanguageForm extends StatefulWidget {
   final state = _LanguageFormState();
-  // final Ondelete ondelete;
 
-  // LanguageForm({required this.ondelete});
   @override
   State<LanguageForm> createState() => state;
 

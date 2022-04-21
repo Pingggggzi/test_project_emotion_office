@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/aboutSet.dart';
+import 'package:test_project_emotion/screens/contactset.dart';
+import 'package:test_project_emotion/screens/educationSet.dart';
+import 'package:test_project_emotion/screens/experienceSet.dart';
+import 'package:test_project_emotion/screens/generalInfoSet.dart';
+import 'package:test_project_emotion/screens/languageSet.dart';
+import 'package:test_project_emotion/screens/projectVideosSet.dart';
+import 'package:test_project_emotion/screens/resumeSet.dart';
 import 'package:test_project_emotion/screens/signup.dart';
+import 'package:test_project_emotion/screens/skillsSet.dart';
 import 'package:test_project_emotion/widgets/languageform.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 
@@ -12,26 +21,6 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   String? valueChoose;
-  List listItem = ['Single', 'Married', 'Divorced', 'Widowed', 'Separated'];
-  List listItem1 = ['Malaysia', 'China'];
-  List listItem11 = ['Johor', 'Kedah'];
-  List listItem21 = ['Anhui', 'Beijing'];
-  DateTime date = DateTime(2022, 04, 15);
-  String gender = 'male';
-  List<LanguageForm> listLanguage = [];
-  addLanguage() {
-    listLanguage.add(new LanguageForm());
-    setState(() {});
-  }
-
-  final TextEditingController firstName = TextEditingController();
-  final TextEditingController lastName = TextEditingController();
-  final TextEditingController houseAddress = TextEditingController();
-  final TextEditingController email = TextEditingController();
-  final TextEditingController phone = TextEditingController();
-  final TextEditingController linkedin = TextEditingController();
-  final TextEditingController facebook = TextEditingController();
-  final TextEditingController salary = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -102,212 +91,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('General information'),
-                                content: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'First Name',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: firstName,
-                                              name: 'Enter First Name'),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Last Name',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: lastName,
-                                              name: 'Enter Last Name'),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Birth Date',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: 230,
-                                      padding: EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            '${date.year}/${date.month}/${date.day}',
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                          const SizedBox(
-                                            height: 10,
-                                          ),
-                                          IconButton(
-                                            onPressed: () async {
-                                              DateTime? newDate =
-                                                  await showDatePicker(
-                                                context: context,
-                                                initialDate: date,
-                                                firstDate: DateTime(1900),
-                                                lastDate: DateTime(2100),
-                                              );
-
-                                              if (newDate == null) return;
-
-                                              setState(() => date = newDate);
-                                            },
-                                            icon: Icon(Icons.date_range),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Marital',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 60,
-                                      padding: EdgeInsets.only(left: 10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          DropdownButton(
-                                            hint: Text(
-                                              "Marital",
-                                              style: TextStyle(
-                                                color: Colors.grey[600],
-                                                fontSize: 17,
-                                              ),
-                                            ),
-                                            underline: SizedBox(),
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18),
-                                            value: valueChoose,
-                                            onChanged: (val) {
-                                              setState(() {
-                                                valueChoose = val as String;
-                                              });
-                                            },
-                                            items: listItem.map((valueItem) {
-                                              return DropdownMenuItem(
-                                                value: valueItem,
-                                                child: Text(valueItem),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Gender',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Radio(
-                                              value: 'Male',
-                                              groupValue: gender,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  gender = value.toString();
-                                                });
-                                              },
-                                            ),
-                                            Text('Male'),
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            Radio(
-                                              value: 'Female',
-                                              groupValue: gender,
-                                              onChanged: (value) {
-                                                gender = value.toString();
-                                              },
-                                            ),
-                                            Text('Female'),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => GeneralInfoSetting()));
                           },
                         ),
                       ],
@@ -409,138 +195,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('Contact'),
-                                content: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'House Address',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: houseAddress,
-                                              name: 'Enter House Address'),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Email Address',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: email,
-                                              name: 'Your Email Address'),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Phone Number',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: phone,
-                                              name: 'Enter Phone Number'),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'LinkedIn',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: linkedin,
-                                              name: 'Enter LinkedIn'),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Facebook',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                              controller: facebook,
-                                              name: 'Enter Facebook'),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => ContactSetting()));
                           },
                         ),
                       ],
@@ -642,37 +299,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('Skills'),
-                                content: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            '*Noted thatBasic(1-3), Intermediate (4-7), Advance (8-10)',
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.add),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => SkillsSetting()));
                           },
                         ),
                       ],
@@ -750,44 +379,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('Language'),
-                                content: Column(
-                                  children: [
-                                    Flexible(
-                                        child: ListView.builder(
-                                            itemCount: listLanguage.length,
-                                            itemBuilder: (_, index) =>
-                                                listLanguage[index])),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Text(
-                                            '*Noted thatBasic(1-3), Intermediate (4-7), Advance (8-10)',
-                                            style: TextStyle(fontSize: 15),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            addLanguage();
-                                          },
-                                          icon: Icon(Icons.add),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => LanguageSetting()));
                           },
                         ),
                       ],
@@ -865,93 +459,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('About'),
-                                content: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Preferred Work Location',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      height: 60,
-                                      padding: EdgeInsets.only(left: 10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        border: Border.all(color: Colors.grey),
-                                        borderRadius: BorderRadius.circular(5),
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          DropdownButton(
-                                            hint: Text(
-                                              "Preferred Work Location",
-                                              style: TextStyle(
-                                                color: Colors.grey[600],
-                                                fontSize: 17,
-                                              ),
-                                            ),
-                                            underline: SizedBox(),
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 18),
-                                            value: valueChoose,
-                                            onChanged: (val) {
-                                              setState(() {
-                                                valueChoose = val as String;
-                                              });
-                                            },
-                                            items: listItem1.map((valueItem1) {
-                                              return DropdownMenuItem(
-                                                value: valueItem1,
-                                                child: Text(valueItem1),
-                                              );
-                                            }).toList(),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          'Expected Salary',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          width: 230,
-                                          child: MyTextFormField(
-                                            controller: salary,
-                                            name: 'Enter Expected Salary',
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => AboutSetting()));
                           },
                         ),
                       ],
@@ -1017,24 +527,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('Experience'),
-                                content: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.add),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => ExperienceSetting()));
                           },
                         ),
                       ],
@@ -1073,24 +568,9 @@ class _ProfileState extends State<Profile> {
                         IconButton(
                           icon: Icon(Icons.edit_rounded),
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text('Education'),
-                                content: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.add),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => EducationSetting()));
                           },
                         ),
                       ],
@@ -1123,17 +603,9 @@ class _ProfileState extends State<Profile> {
                       IconButton(
                         icon: Icon(Icons.edit_rounded),
                         onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text('Resume'),
-                              content: Row(
-                                children: [
-                                  Icon(Icons.upload),
-                                ],
-                              ),
-                            ),
-                          );
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (ctx) => ResumeSetting()));
                         },
                       ),
                     ],
@@ -1173,108 +645,17 @@ class _ProfileState extends State<Profile> {
                             IconButton(
                               icon: Icon(Icons.edit_rounded),
                               onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                    title: Text('Project Videos'),
-                                    content: Column(
-                                      children: [
-                                        Column(
-                                          children: [
-                                            Container(
-                                              width: 240,
-                                              height: 80,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black26),
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      '*Noted that larger files take a longer time to save.',
-                                                      style: TextStyle(
-                                                          color: Colors.red,
-                                                          fontSize: 15),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 240,
-                                              height: 80,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black26),
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Column(
-                                                    children: [
-                                                      Icon(Icons.upload),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Column(
-                                          children: [
-                                            Container(
-                                              width: 240,
-                                              height: 80,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black26),
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Flexible(
-                                                    child: Text(
-                                                      '*If any video links should be uploaded here.',
-                                                      style: TextStyle(
-                                                          color: Colors.red,
-                                                          fontSize: 15),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 240,
-                                              height: 80,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color: Colors.black26),
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () {},
-                                                    icon: Icon(Icons.add),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (ctx) =>
+                                            ProjectVideosSetting()));
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (context) => AlertDialog(
+                                //     title: Text('Project Videos'),
+                                //     content:
+                                //   ),
+                                // );
                               },
                             ),
                           ],
