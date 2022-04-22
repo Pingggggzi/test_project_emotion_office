@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/profile.dart';
+import 'package:test_project_emotion/widgets/projectVideosForm.dart';
 
 class ProjectVideosSetting extends StatefulWidget {
   @override
@@ -7,6 +8,12 @@ class ProjectVideosSetting extends StatefulWidget {
 }
 
 class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
+  List<ProjectVideosForm> listVideos = [];
+  addVideos() {
+    listVideos.add(new ProjectVideosForm());
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,24 +94,24 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                     ],
                   ),
                 ),
-                Container(
-                  width: double.infinity,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.add),
-                      ),
-                    ],
-                  ),
+              ],
+            ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    addVideos();
+                  },
+                  icon: Icon(Icons.add),
                 ),
               ],
             ),
+            Flexible(
+                child: ListView.builder(
+              itemCount: listVideos.length,
+              itemBuilder: (_, index) => listVideos[index],
+              shrinkWrap: true,
+            )),
           ],
         ),
       ),

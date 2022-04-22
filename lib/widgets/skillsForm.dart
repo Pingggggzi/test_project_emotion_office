@@ -37,50 +37,57 @@ class _SkillsFormState extends State<SkillsForm> {
               SizedBox(
                 height: 10,
               ),
-              Row(
-                children: [
-                  Container(
-                      width: 260,
-                      child: MyTextFormField(
-                          controller: skills, name: 'Enter Skills')),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
               Container(
-                width: 260,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
+                padding: EdgeInsets.all(20),
+                child: Column(
                   children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Level",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 17,
-                        ),
+                    Row(
+                      children: [
+                        Container(
+                            width: 260,
+                            child: MyTextFormField(
+                                controller: skills, name: 'Enter Skills')),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      width: 260,
+                      height: 60,
+                      padding: EdgeInsets.only(left: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(5),
                       ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                      value: valueChoose,
-                      onChanged: (val) {
-                        setState(() {
-                          valueChoose = val as String;
-                        });
-                      },
-                      items: listItem.map((valueItem) {
-                        return DropdownMenuItem(
-                          value: valueItem,
-                          child: Text(valueItem),
-                        );
-                      }).toList(),
+                      child: Row(
+                        children: [
+                          DropdownButton(
+                            hint: Text(
+                              "Level",
+                              style: TextStyle(
+                                color: Colors.grey[600],
+                                fontSize: 17,
+                              ),
+                            ),
+                            underline: SizedBox(),
+                            style: TextStyle(color: Colors.black, fontSize: 18),
+                            value: valueChoose,
+                            onChanged: (val) {
+                              setState(() {
+                                valueChoose = val as String;
+                              });
+                            },
+                            items: listItem.map((valueItem) {
+                              return DropdownMenuItem(
+                                value: valueItem,
+                                child: Text(valueItem),
+                              );
+                            }).toList(),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

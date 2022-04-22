@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/profile.dart';
+import 'package:test_project_emotion/widgets/experienceForm.dart';
 
 class ExperienceSetting extends StatefulWidget {
   @override
@@ -7,6 +8,12 @@ class ExperienceSetting extends StatefulWidget {
 }
 
 class _ExperienceSettingState extends State<ExperienceSetting> {
+  List<ExperienceForm> listExperience = [];
+  addExperience() {
+    listExperience.add(new ExperienceForm());
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +32,18 @@ class _ExperienceSettingState extends State<ExperienceSetting> {
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
+            Flexible(
+                child: ListView.builder(
+              itemCount: listExperience.length,
+              itemBuilder: (_, index) => listExperience[index],
+              shrinkWrap: true,
+            )),
             Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    addExperience();
+                  },
                   icon: Icon(Icons.add),
                 ),
               ],
