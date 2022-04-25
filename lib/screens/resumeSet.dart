@@ -22,9 +22,9 @@ class _ResumeSettingState extends State<ResumeSetting> {
         backgroundColor: Color.fromRGBO(50, 75, 205, 1),
       ),
       body: Container(
-        margin: EdgeInsets.all(10),
-        padding: EdgeInsets.all(20),
-        height: 100,
+        margin: EdgeInsets.all(30),
+        // padding: EdgeInsets.all(20),
+        height: 35,
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.black26),
@@ -33,25 +33,54 @@ class _ResumeSettingState extends State<ResumeSetting> {
           children: [
             Column(
               children: [
-                Icon(Icons.upload),
+                Container(
+                    height: 33,
+                    width: 35,
+                    // alignment: Alignment.centerLeft,
+                    color: Colors.grey,
+                    child: Icon(Icons.upload)),
               ],
             ),
             SizedBox(
-              width: 10,
-            ),
-            Column(
-              children: [Text('Choose File')],
-            ),
-            SizedBox(
-              width: 10,
+              width: 20,
             ),
             Column(
               children: [
-                ElevatedButton(
+                Container(
+                  height: 30,
+                  alignment: Alignment.center,
+                  width: 208,
+                  child: TextButton(
+                    child: Text(
+                      'Choose File',
+                      style: TextStyle(fontSize: 15, color: Colors.grey[800]),
+                    ),
                     onPressed: () async {
                       final result = await FilePicker.platform.pickFiles();
                     },
-                    child: Text('Browse'))
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Column(
+              children: [
+                Container(
+                  color: Colors.grey,
+                  alignment: Alignment.centerRight,
+                  height: 33,
+                  child: TextButton(
+                    onPressed: () async {
+                      final result = await FilePicker.platform.pickFiles();
+                    },
+                    child: Text(
+                      'Browse',
+                      style: TextStyle(fontSize: 15, color: Colors.black),
+                    ),
+                  ),
+                ),
               ],
             ),
           ],

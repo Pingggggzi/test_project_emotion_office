@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/profile.dart';
 import 'package:test_project_emotion/widgets/projectVideosForm.dart';
@@ -38,8 +39,8 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
+                    border: Border(
+                        bottom: BorderSide(width: 1, color: Colors.black26)),
                   ),
                   child: Row(
                     children: [
@@ -54,16 +55,71 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                 ),
                 Container(
                   width: double.infinity,
-                  height: 80,
+                  height: 35,
+                  margin: EdgeInsets.fromLTRB(10, 40, 10, 0),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: Row(
                     children: [
-                      Column(
+                      Row(
                         children: [
-                          Icon(Icons.upload),
+                          Column(
+                            children: [
+                              Container(
+                                  height: 33,
+                                  width: 35,
+                                  // alignment: Alignment.centerLeft,
+                                  color: Colors.grey,
+                                  child: Icon(Icons.upload)),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                height: 30,
+                                alignment: Alignment.center,
+                                width: 188,
+                                child: TextButton(
+                                  child: Text(
+                                    'Choose File',
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.grey[800]),
+                                  ),
+                                  onPressed: () async {
+                                    final result =
+                                        await FilePicker.platform.pickFiles();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                color: Colors.grey,
+                                alignment: Alignment.centerRight,
+                                height: 33,
+                                child: TextButton(
+                                  onPressed: () async {
+                                    final result =
+                                        await FilePicker.platform.pickFiles();
+                                  },
+                                  child: Text(
+                                    'Browse',
+                                    style: TextStyle(
+                                        fontSize: 15, color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -80,8 +136,8 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                   width: double.infinity,
                   height: 80,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
+                    border: Border(
+                        bottom: BorderSide(width: 1, color: Colors.black26)),
                   ),
                   child: Row(
                     children: [

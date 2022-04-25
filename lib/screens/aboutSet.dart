@@ -8,10 +8,64 @@ class AboutSetting extends StatefulWidget {
 }
 
 class _AboutSettingState extends State<AboutSetting> {
-  String? valueChoose1;
-  List listItem1 = ['Malaysia', 'China'];
-  List listItem11 = ['Johor', 'Kedah'];
-  List listItem21 = ['Anhui', 'Beijing'];
+  String? country;
+  String? state;
+
+  final List listCountry = ['Malaysia', 'China'];
+  final List listStateMY = [
+    'Johor',
+    'Kedah',
+    'Kelantan',
+    'Kuala Lumpur',
+    'Labuan',
+    'Melaka',
+    'Negeri Sembilan',
+    'Pahang',
+    'Perak',
+    'Perlis',
+    'Pulau Pinang',
+    'Sabah',
+    'Sarawak',
+    'Selangor',
+    'Terengganu'
+  ];
+  final List listStateCN = [
+    'Anhui',
+    'Beijing',
+    'Chongqing',
+    'Fujian',
+    'Guangdong',
+    'Gansu',
+    'Guangxi',
+    'Guizhou',
+    'Henan',
+    'Hubei',
+    'Hebei',
+    'Hainan',
+    'Hong Kong',
+    'Heilongjiang',
+    'Hunan',
+    'Jilin',
+    'Jiangsu',
+    'Jiangxi',
+    'Liaoning',
+    'Macao',
+    'Inner Mongolia',
+    'Ningxia Hui',
+    'Qinghai',
+    'Sichuan',
+    'Shandong',
+    'Shanghai',
+    'Shaanxi',
+    'Shanxi',
+    'Tianjin',
+    'Taiwan',
+    'Xinjiang Uyghur',
+    'Tibet',
+    'Yunnan',
+    'Zhejiang'
+  ];
+  List listState = [];
   final TextEditingController salary = TextEditingController();
 
   @override
@@ -56,7 +110,7 @@ class _AboutSettingState extends State<AboutSetting> {
                 children: [
                   DropdownButton(
                     hint: Text(
-                      "Preferred Work Location",
+                      "Select Country",
                       style: TextStyle(
                         color: Colors.grey[600],
                         fontSize: 17,
@@ -64,16 +118,58 @@ class _AboutSettingState extends State<AboutSetting> {
                     ),
                     underline: SizedBox(),
                     style: TextStyle(color: Colors.black, fontSize: 18),
-                    value: valueChoose1,
+                    value: country,
                     onChanged: (val) {
+                      state = null;
+                      listState = val == 'Malaysia' ? listStateMY : listStateCN;
                       setState(() {
-                        valueChoose1 = val as String;
+                        country = val as String;
                       });
                     },
-                    items: listItem1.map((valueItem1) {
+                    items: listCountry.map((valueCountry) {
                       return DropdownMenuItem(
-                        value: valueItem1,
-                        child: Text(valueItem1),
+                        value: valueCountry,
+                        child: Text(valueCountry),
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: double.infinity,
+              height: 60,
+              padding: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                children: [
+                  DropdownButton(
+                    hint: Text(
+                      "Select State",
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                        fontSize: 17,
+                      ),
+                    ),
+                    underline: SizedBox(),
+                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    value: state,
+                    onChanged: (val) {
+                      setState(() {
+                        state = val as String;
+                      });
+                    },
+                    items: listState.map((valueState) {
+                      return DropdownMenuItem(
+                        value: valueState,
+                        child: Text(valueState),
                       );
                     }).toList(),
                   ),
