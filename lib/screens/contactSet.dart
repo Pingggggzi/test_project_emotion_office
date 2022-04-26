@@ -46,7 +46,7 @@ class _ContactSettingState extends State<ContactSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: houseAddress, name: 'Enter House Address'),
                 )
@@ -69,7 +69,7 @@ class _ContactSettingState extends State<ContactSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: email, name: 'Your Email Address'),
                 )
@@ -92,7 +92,7 @@ class _ContactSettingState extends State<ContactSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: phone, name: 'Enter Phone Number'),
                 )
@@ -115,7 +115,7 @@ class _ContactSettingState extends State<ContactSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: linkedin, name: 'Enter LinkedIn'),
                 )
@@ -138,10 +138,46 @@ class _ContactSettingState extends State<ContactSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: facebook, name: 'Enter Facebook'),
                 )
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (ctx) => Profile()));
+                        },
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 16),
+                        ))
+                  ],
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Column(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Save',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        )),
+                  ],
+                ),
               ],
             ),
           ],

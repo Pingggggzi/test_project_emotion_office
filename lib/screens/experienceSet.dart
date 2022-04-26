@@ -32,12 +32,6 @@ class _ExperienceSettingState extends State<ExperienceSetting> {
         padding: EdgeInsets.all(20),
         child: Column(
           children: [
-            Flexible(
-                child: ListView.builder(
-              itemCount: listExperience.length,
-              itemBuilder: (_, index) => listExperience[index],
-              shrinkWrap: true,
-            )),
             Row(
               children: [
                 IconButton(
@@ -45,6 +39,48 @@ class _ExperienceSettingState extends State<ExperienceSetting> {
                     addExperience();
                   },
                   icon: Icon(Icons.add),
+                ),
+              ],
+            ),
+            Flexible(
+                child: ListView.builder(
+              itemCount: listExperience.length,
+              itemBuilder: (_, index) => listExperience[index],
+              shrinkWrap: true,
+            )),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (ctx) => Profile()));
+                        },
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 16),
+                        ))
+                  ],
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Column(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Save',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        )),
+                  ],
                 ),
               ],
             ),

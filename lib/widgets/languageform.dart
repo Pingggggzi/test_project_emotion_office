@@ -29,110 +29,101 @@ class _LanguageFormState extends State<LanguageForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(20),
-      child: Card(
-        child: Form(
-          key: form,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppBar(
-                actions: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.delete,
-                      color: Colors.black,
+    return ExpansionTile(
+      title: Text(''),
+      initiallyExpanded: true,
+      children: [
+        Padding(
+          padding: EdgeInsets.all(20),
+          child: Card(
+            child: Form(
+              key: form,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 60,
+                    padding: EdgeInsets.only(left: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
+                      children: [
+                        DropdownButton(
+                          hint: Text(
+                            "Language",
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontSize: 17,
+                            ),
+                          ),
+                          underline: SizedBox(),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          value: valueChoose1,
+                          onChanged: (val) {
+                            setState(() {
+                              valueChoose1 = val as String;
+                            });
+                          },
+                          items: listItem1.map((valueItem1) {
+                            return DropdownMenuItem(
+                              value: valueItem1,
+                              child: Text(valueItem1),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 60,
+                    padding: EdgeInsets.only(left: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
+                      children: [
+                        DropdownButton(
+                          hint: Text(
+                            "Level",
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontSize: 17,
+                            ),
+                          ),
+                          underline: SizedBox(),
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                          value: valueChoose2,
+                          onChanged: (val) {
+                            setState(() {
+                              valueChoose2 = val as String;
+                            });
+                          },
+                          items: listItem2.map((valueItem2) {
+                            return DropdownMenuItem(
+                              value: valueItem2,
+                              child: Text(valueItem2),
+                            );
+                          }).toList(),
+                        ),
+                      ],
                     ),
                   ),
                 ],
-                backgroundColor: Colors.white,
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Language",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 17,
-                        ),
-                      ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                      value: valueChoose1,
-                      onChanged: (val) {
-                        setState(() {
-                          valueChoose1 = val as String;
-                        });
-                      },
-                      items: listItem1.map((valueItem1) {
-                        return DropdownMenuItem(
-                          value: valueItem1,
-                          child: Text(valueItem1),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: double.infinity,
-                height: 60,
-                padding: EdgeInsets.only(left: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    DropdownButton(
-                      hint: Text(
-                        "Level",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 17,
-                        ),
-                      ),
-                      underline: SizedBox(),
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                      value: valueChoose2,
-                      onChanged: (val) {
-                        setState(() {
-                          valueChoose2 = val as String;
-                        });
-                      },
-                      items: listItem2.map((valueItem2) {
-                        return DropdownMenuItem(
-                          value: valueItem2,
-                          child: Text(valueItem2),
-                        );
-                      }).toList(),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 

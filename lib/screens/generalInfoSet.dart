@@ -47,7 +47,7 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: firstName, name: 'Enter First Name'),
                 ),
@@ -70,7 +70,7 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
             Row(
               children: [
                 Container(
-                  width: 230,
+                  width: 350,
                   child: MyTextFormField(
                       controller: lastName, name: 'Enter Last Name'),
                 ),
@@ -91,20 +91,18 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
               height: 10,
             ),
             Container(
-              width: 230,
+              width: double.infinity,
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey),
                 borderRadius: BorderRadius.circular(5),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     '${date.year}/${date.month}/${date.day}',
                     style: TextStyle(fontSize: 18),
-                  ),
-                  const SizedBox(
-                    height: 10,
                   ),
                   IconButton(
                     onPressed: () async {
@@ -139,7 +137,7 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
               height: 10,
             ),
             Container(
-              width: 230,
+              width: double.infinity,
               height: 60,
               padding: EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
@@ -151,7 +149,7 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
                 children: [
                   DropdownButton(
                     hint: Text(
-                      "Marital",
+                      "Choose Marital",
                       style: TextStyle(
                         color: Colors.grey[600],
                         fontSize: 17,
@@ -221,6 +219,42 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
                       'Female',
                       style: TextStyle(fontSize: 18),
                     ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (ctx) => Profile()));
+                        },
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 16),
+                        ))
+                  ],
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Column(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Save',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        )),
                   ],
                 ),
               ],

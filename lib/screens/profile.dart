@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/aboutSet.dart';
 import 'package:test_project_emotion/screens/contactset.dart';
@@ -11,7 +13,7 @@ import 'package:test_project_emotion/screens/signup.dart';
 import 'package:test_project_emotion/screens/skillsSet.dart';
 import 'package:test_project_emotion/widgets/languageform.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
-
+import 'package:image_picker/image_picker.dart';
 import 'homepage.dart';
 
 class Profile extends StatefulWidget {
@@ -21,6 +23,8 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   String? valueChoose;
+  PickedFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +47,31 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.all(10),
               child: Row(
                 children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage("images/User.jpg"),
+                  Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundImage: _imageFile == null
+                            ? AssetImage("images/User.jpg") as ImageProvider
+                            : FileImage(File(_imageFile!.path)),
+                      ),
+                      Positioned(
+                          bottom: 4,
+                          right: 2,
+                          child: InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: ((builder) => bottomSheet()),
+                              );
+                            },
+                            child: Icon(
+                              Icons.camera_alt,
+                              color: Colors.blueAccent,
+                              size: 20,
+                            ),
+                          ))
+                    ],
                   ),
                   SizedBox(width: 20),
                   Column(
@@ -679,5 +705,55 @@ class _ProfileState extends State<Profile> {
         ),
       ),
     );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Choose Profile Photo',
+            style: TextStyle(fontSize: 18),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FlatButton.icon(
+                onPressed: () {
+                  takePhoto(ImageSource.camera);
+                },
+                icon: Icon(Icons.camera),
+                label: Text('Camera'),
+              ),
+              FlatButton.icon(
+                onPressed: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                icon: Icon(Icons.image),
+                label: Text('Gallery'),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile;
+    });
   }
 }
