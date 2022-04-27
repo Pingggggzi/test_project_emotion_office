@@ -37,7 +37,7 @@ class _ProfileState extends State<Profile> {
                   MaterialPageRoute(builder: (ctx) => HomePage()));
             }),
         title: Text("Profile Page"),
-        backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+        backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
         decoration: BoxDecoration(color: Colors.grey[100]),
@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
                             },
                             child: Icon(
                               Icons.camera_alt,
-                              color: Colors.blueAccent,
+                              color: Color.fromRGBO(50, 75, 205, 1),
                               size: 20,
                             ),
                           ))
@@ -97,6 +97,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -201,6 +202,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -305,6 +307,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -385,6 +388,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -465,6 +469,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -533,6 +538,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -574,6 +580,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -615,6 +622,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [
@@ -649,6 +657,7 @@ class _ProfileState extends State<Profile> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: Column(
                 children: [

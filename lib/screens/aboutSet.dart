@@ -79,7 +79,7 @@ class _AboutSettingState extends State<AboutSetting> {
                   MaterialPageRoute(builder: (ctx) => Profile()));
             }),
         title: Text("About"),
-        backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+        backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
         margin: EdgeInsets.all(10),
@@ -216,7 +216,10 @@ class _AboutSettingState extends State<AboutSetting> {
                         },
                         child: Text(
                           'Cancel',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromRGBO(50, 75, 205, 1),
+                          ),
                         ))
                   ],
                 ),
@@ -226,13 +229,17 @@ class _AboutSettingState extends State<AboutSetting> {
                 Column(
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        )),
+                      onPressed: () {},
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(50, 75, 205, 1))),
+                    ),
                   ],
                 ),
               ],

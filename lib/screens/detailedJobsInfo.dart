@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/homepage.dart';
+import 'package:test_project_emotion/screens/jobs.dart';
 
-class Jobprogress extends StatefulWidget {
+class DetailedJobsInfo extends StatefulWidget {
   @override
-  State<Jobprogress> createState() => _JobprogressState();
+  State<DetailedJobsInfo> createState() => _DetailedJobsInfoState();
 }
 
-class _JobprogressState extends State<Jobprogress> {
+class _DetailedJobsInfoState extends State<DetailedJobsInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,10 +15,10 @@ class _JobprogressState extends State<Jobprogress> {
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios_new),
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (ctx) => HomePage()));
+              Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (ctx) => Jobs()));
             }),
-        title: Text("Job Progress"),
+        title: Text("Tem"),
         backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
     );

@@ -26,7 +26,7 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
                   MaterialPageRoute(builder: (ctx) => Profile()));
             }),
         title: Text("General Information"),
-        backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+        backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
         margin: EdgeInsets.all(10),
@@ -107,6 +107,11 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
                   IconButton(
                     onPressed: () async {
                       DateTime? newDate = await showDatePicker(
+                        // builder: ((context, child) {
+                        //   return Theme(data: ThemeData(
+                        //     cardColor: Colors.red
+                        //   ), child: child,)
+                        // }),
                         context: context,
                         initialDate: date,
                         firstDate: DateTime(1900),
@@ -238,7 +243,10 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
                         },
                         child: Text(
                           'Cancel',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromRGBO(50, 75, 205, 1),
+                          ),
                         ))
                   ],
                 ),
@@ -248,13 +256,17 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
                 Column(
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        )),
+                      onPressed: () {},
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(50, 75, 205, 1))),
+                    ),
                   ],
                 ),
               ],

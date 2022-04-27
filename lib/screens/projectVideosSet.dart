@@ -26,7 +26,7 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                   MaterialPageRoute(builder: (ctx) => Profile()));
             }),
         title: Text("Project Videos"),
-        backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+        backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
         margin: EdgeInsets.all(10),
@@ -183,7 +183,10 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                         },
                         child: Text(
                           'Cancel',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Color.fromRGBO(50, 75, 205, 1),
+                          ),
                         ))
                   ],
                 ),
@@ -193,13 +196,17 @@ class _ProjectVideosSettingState extends State<ProjectVideosSetting> {
                 Column(
                   children: [
                     ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                            fontSize: 16,
-                          ),
-                        )),
+                      onPressed: () {},
+                      child: Text(
+                        'Save',
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                      ),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(50, 75, 205, 1))),
+                    ),
                   ],
                 ),
               ],

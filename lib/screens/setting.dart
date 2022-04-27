@@ -34,9 +34,9 @@ class _SettingState extends State<Setting> {
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black26),
-              ),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(5)),
               child: Row(
                 children: [
                   DropdownButton(
@@ -71,21 +71,24 @@ class _SettingState extends State<Setting> {
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black26),
-              ),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(5)),
               child: Row(
                 children: [
                   Expanded(
                     child: Text(
                       'Password Settings',
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.arrow_right),
+                    icon: Icon(
+                      Icons.arrow_right,
+                      size: 25,
+                    ),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (ctx) => Passwordsetting()));

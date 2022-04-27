@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/interview.dart';
 import 'package:test_project_emotion/screens/jobprogress.dart';
 import 'package:test_project_emotion/screens/jobs.dart';
 import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/screens/profile.dart';
 import 'package:test_project_emotion/screens/setting.dart';
+import 'package:test_project_emotion/widgets/recording.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -24,11 +26,12 @@ class HomePageState extends State<HomePage> {
         drawer: _buildMyDrawer(),
         appBar: AppBar(
           leading: RoundedIconButton(
-              iconData: Icons.menu,
-              press: () {
-                Scaffold.of(context).openDrawer();
-              }),
-          backgroundColor: Colors.black,
+            iconData: Icons.menu,
+            press: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+          backgroundColor: Color.fromARGB(255, 52, 58, 64),
           title: Text(
             "Dashboard",
             style: TextStyle(fontSize: 18.0),
@@ -43,166 +46,214 @@ class HomePageState extends State<HomePage> {
             preferredSize: Size.fromHeight(15),
           ),
         ),
-        body: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
+        body: Container(
+          color: Colors.grey[100],
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Total Accumulated Job Applied",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                          Icon(Icons.business_center),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Job Applied Current Month",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                          Icon(Icons.event_available),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Job Applied Previous Month",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                          Icon(Icons.event_note),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: 80,
+                      width: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black26),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Job Interested On You",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 10, fontWeight: FontWeight.bold),
+                          ),
+                          Icon(Icons.favorite),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
                 children: [
                   Container(
-                    color: Colors.grey,
-                    height: 80,
-                    width: 80,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    padding: EdgeInsets.all(5),
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Total Accumulated Job Applied",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.bold),
+                          "Job Applied",
+                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        Icon(Icons.business_center),
                       ],
                     ),
                   ),
-                  Container(
-                    height: 80,
-                    width: 80,
-                    color: Colors.grey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Job Applied Current Month",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.bold),
+                  // Expanded(
+                  // height: 180,
+                  // child:
+                  ListView(
+                    shrinkWrap: true,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                        padding: EdgeInsets.all(5),
+                        height: 200,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border(
+                            bottom: BorderSide(color: Colors.black26),
+                            left: BorderSide(color: Colors.black26),
+                            right: BorderSide(color: Colors.black26),
+                          ),
                         ),
-                        Icon(Icons.event_available),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    color: Colors.grey,
-                    height: 80,
-                    width: 80,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Job Applied Previous Month",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.bold),
+                        child: Row(
+                          children: [
+                            Text(
+                              "No jobs applied...",
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
-                        Icon(Icons.event_note),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    color: Colors.grey,
-                    height: 80,
-                    width: 80,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Job Interested On You",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 10, fontWeight: FontWeight.bold),
-                        ),
-                        Icon(Icons.favorite),
-                      ],
-                    ),
-                  ),
+                  // ),
                 ],
               ),
-            ),
-            Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                  height: 20,
-                  color: Colors.grey[600],
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+              Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                    padding: EdgeInsets.all(5),
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Interview Invitation",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Expanded(
+                  // height: 180,
+                  // child:
+                  ListView(
+                    shrinkWrap: true,
                     children: [
-                      Text(
-                        "Job Applied",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                        height: 200,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border(
+                                bottom: BorderSide(color: Colors.black26),
+                                left: BorderSide(color: Colors.black26),
+                                right: BorderSide(color: Colors.black26))),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Invitation links here",
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                ),
-                // Expanded(
-                // height: 180,
-                // child:
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
-                      height: 180,
-                      color: Colors.grey,
-                      child: Row(
-                        children: [
-                          Text("No jobs applied..."),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                // ),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                  height: 20,
-                  color: Colors.grey[600],
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Interview Invitation",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                // Expanded(
-                // height: 180,
-                // child:
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
-                      height: 180,
-                      color: Colors.grey,
-                      child: Row(
-                        children: [
-                          Text("Invation links here"),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                // ),
-              ],
-            ),
-          ],
+                  // ),
+                ],
+              ),
+            ],
+          ),
         ));
   }
 
@@ -215,7 +266,7 @@ class HomePageState extends State<HomePage> {
   Widget _buildMyDrawer() {
     return Drawer(
       child: Container(
-        color: Colors.grey,
+        color: Color.fromARGB(255, 52, 58, 64),
         child: ListView(
           children: <Widget>[
             // _buildUserAccountsDrawerHeader(),
@@ -291,10 +342,10 @@ class HomePageState extends State<HomePage> {
                   settingColor = false;
                 });
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (ctx) => Jobprogress()));
+                    MaterialPageRoute(builder: (ctx) => Interview()));
               },
               leading: Icon(Icons.pending_actions),
-              title: Text("Job Progress"),
+              title: Text("Job Progress/ interview tem"),
             ),
             ListTile(
               selected: jobsColor,

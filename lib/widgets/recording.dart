@@ -1,188 +1,229 @@
-import 'package:flutter/material.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
-import 'package:chewie/chewie.dart';
-import 'package:video_player/video_player.dart';
+// import 'package:flutter/material.dart';
+// import 'dart:io';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:chewie/chewie.dart';
+// import 'package:test_project_emotion/screens/homepage.dart';
+// import 'package:video_player/video_player.dart';
 
-class Recording extends StatefulWidget {
-  Recording({Key? key, required this.title}) : super(key: key);
+// class Recording extends StatefulWidget {
+//   @override
+//   State<Recording> createState() => _RecordingState();
+// }
 
-  final String title;
+// class _RecordingState extends State<Recording> {
+//   PickedFile? _imageFile;
+//   PickedFile? _videoFile;
+//   final ImagePicker _picker = ImagePicker();
 
-  @override
-  State<Recording> createState() => _RecordingState();
-}
+//   _camera(ImageSource sourse) async {
+//     final pickedFile = await _picker.getImage(
+//       source: sourse,
+//     );
 
-class _RecordingState extends State<Recording> {
-  File? imageFile;
-  File? videoFile;
-  final ImagePicker _picker = ImagePicker();
+//     if (pickedFile != null) {
+//       setState(() {
+//         _imageFile = pickedFile;
+//       });
+//     }
+//   }
 
-  _camera() async {
-    final XFile? theImage = await _picker.pickImage(
-      source: ImageSource.camera,
-    );
+//   _picture(ImageSource source) async {
+//     final pickedFile = await _picker.getImage(
+//       source: source,
+//     );
 
-    File? imageFile = File(theImage!.path);
-    return theImage;
+//     if (pickedFile != null) {
+//       setState(() {
+//         _imageFile = pickedFile;
+//       });
+//     }
+//   }
 
-    if (theImage != null) {
-      setState(() {
-        imageFile = theImage as File;
-      });
-    }
-  }
+//   _videoPic(ImageSource source) async {
+//     final pickedFile = await _picker.getVideo(source: source);
 
-  _picture() async {
-    final XFile? theImage = await _picker.pickImage(
-      source: ImageSource.gallery,
-    );
+//     if (pickedFile != null) {
+//       setState(() {
+//         _videoFile = pickedFile;
+//         print("set");
+//       });
+//     }
+//   }
 
-    File? imageFile = File(theImage!.path);
-    return theImage;
+//   _record(ImageSource source) async {
+//     final pickedFile = await _picker.getVideo(source: source);
 
-    if (theImage != null) {
-      setState(() {
-        imageFile = theImage as File;
-      });
-    }
-  }
+//     if (pickedFile != null) {
+//       setState(() {
+//         _videoFile = pickedFile;
+//       });
+//     }
+//   }
 
-  _videoPic() async {
-    final XFile? theVid = await _picker.pickVideo(source: ImageSource.gallery);
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         leading: IconButton(
+//             icon: Icon(Icons.arrow_back_ios_new),
+//             onPressed: () {
+//               Navigator.of(context).pushReplacement(
+//                   MaterialPageRoute(builder: (ctx) => HomePage()));
+//             }),
+//         title: Text("Interview tem"),
+//         backgroundColor: Color.fromARGB(255, 52, 58, 64),
+//       ),
+//       body: Center(
+//         child: ListView(
+//           children: [
+//             Column(
+//               children: [
+//                 //video
+//                 Container(
+//                   color: Colors.black,
+//                   margin: EdgeInsets.all(20),
+//                   height: MediaQuery.of(context).size.height * (30 / 100),
+//                   width: MediaQuery.of(context).size.width * (100 / 100),
+//                   child: _videoFile == null
+//                       ? Center(
+//                           child: IconButton(
+//                           icon: Icon(
+//                             Icons.videocam,
+//                             color: Colors.blueAccent,
+//                             size: 50,
+//                           ),
+//                           onPressed: () {
+//                             showModalBottomSheet(
+//                               context: context,
+//                               builder: ((builder) => bottomSheet2()),
+//                             );
+//                           },
+//                         ))
+//                       : FittedBox(
+//                           fit: BoxFit.contain,
+//                           child: mounted
+//                               ? Chewie(
+//                                   controller: ChewieController(
+//                                     videoPlayerController:
+//                                         VideoPlayerController.file(
+//                                             File(_videoFile!.path)),
+//                                     aspectRatio: 3 / 2,
+//                                     autoPlay: true,
+//                                     looping: true,
+//                                   ),
+//                                 )
+//                               : Container(),
+//                         ),
+//                 ),
+//                 Container(
+//                   color: Colors.black,
+//                   margin: EdgeInsets.all(20),
+//                   height: MediaQuery.of(context).size.height * (30 / 100),
+//                   width: MediaQuery.of(context).size.width * (100 / 100),
+//                   child: FittedBox(
+//                     fit: BoxFit.contain,
+//                     child: _imageFile == null
+//                         ? Center(
+//                             child: Icon(
+//                               Icons.video_library,
+//                               size: 10,
+//                               color: Colors.blueAccent,
+//                             ),
+//                           )
+//                         : Image.file(File(_imageFile!.path)),
+//                   ),
+//                 ),
+//                 RaisedButton(
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       Text('Camera'),
+//                       Icon(Icons.camera),
+//                     ],
+//                   ),
+//                   onPressed: () {
+//                     _camera(ImageSource.camera);
+//                   },
+//                 ),
+//                 RaisedButton(
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       Text('Picture'),
+//                       Icon(Icons.add_a_photo),
+//                     ],
+//                   ),
+//                   onPressed: () {
+//                     _picture(ImageSource.gallery);
+//                   },
+//                 ),
+//                 RaisedButton(
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       Text('Video'),
+//                       Icon(Icons.video_library),
+//                     ],
+//                   ),
+//                   onPressed: () {
+//                     _videoPic(ImageSource.gallery);
+//                   },
+//                 ),
+//                 RaisedButton(
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [Text('Record'), Icon(Icons.videocam)],
+//                   ),
+//                   onPressed: () {
+//                     _record(ImageSource.camera);
+//                   },
+//                 ),
+//               ],
+//             )
+//           ],
+//         ),
+//       ),
+//     );
+//   }
 
-    File? videoFile = File(theVid!.path);
-    return theVid;
-
-    if (theVid != null) {
-      setState(() {
-        videoFile = theVid as File;
-        print("set");
-      });
-    }
-  }
-
-  _record() async {
-    final XFile? theVid = await _picker.pickVideo(source: ImageSource.camera);
-
-    File? videoFile = File(theVid!.path);
-    return theVid;
-
-    if (theVid != null) {
-      setState(() {
-        videoFile = theVid as File;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 50.0,
-                ),
-                //video
-                Container(
-                  color: Colors.brown,
-                  height: MediaQuery.of(context).size.height * (30 / 100),
-                  width: MediaQuery.of(context).size.width * (100 / 100),
-                  child: videoFile == null
-                      ? Center(
-                          child: Icon(
-                            Icons.videocam,
-                            color: Colors.red,
-                            size: 50.0,
-                          ),
-                        )
-                      : FittedBox(
-                          fit: BoxFit.contain,
-                          child: mounted
-                              ? Chewie(
-                                  controller: ChewieController(
-                                    videoPlayerController:
-                                        VideoPlayerController.file(videoFile!),
-                                    aspectRatio: 3 / 2,
-                                    autoPlay: true,
-                                    looping: true,
-                                  ),
-                                )
-                              : Container(),
-                        ),
-                ),
-                Container(
-                  color: Colors.lightGreen,
-                  height: MediaQuery.of(context).size.height * (30 / 100),
-                  width: MediaQuery.of(context).size.width * (100 / 100),
-                  child: FittedBox(
-                    fit: BoxFit.contain,
-                    child: imageFile == null
-                        ? Center(
-                            child: Icon(
-                              Icons.photo,
-                              color: Colors.blueAccent,
-                            ),
-                          )
-                        : Image.file(imageFile!),
-                  ),
-                ),
-                RaisedButton(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Camera'),
-                      Icon(Icons.camera),
-                    ],
-                  ),
-                  onPressed: () {
-                    _camera();
-                  },
-                ),
-                RaisedButton(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Picture'),
-                      Icon(Icons.add_a_photo),
-                    ],
-                  ),
-                  onPressed: () {
-                    _picture();
-                  },
-                ),
-                RaisedButton(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('Video'),
-                      Icon(Icons.video_library),
-                    ],
-                  ),
-                  onPressed: () {
-                    _videoPic();
-                  },
-                ),
-                RaisedButton(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [Text('Record'), Icon(Icons.videocam)],
-                  ),
-                  onPressed: () {
-                    _record();
-                  },
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
+//   Widget bottomSheet2() {
+//     return Container(
+//       height: 100,
+//       width: MediaQuery.of(context).size.width,
+//       margin: EdgeInsets.symmetric(
+//         horizontal: 20,
+//         vertical: 20,
+//       ),
+//       child: Column(
+//         children: [
+//           Text(
+//             'Choose Profile Photo',
+//             style: TextStyle(fontSize: 18),
+//           ),
+//           SizedBox(
+//             height: 20,
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               FlatButton.icon(
+//                 onPressed: () {
+//                   _videoPic(ImageSource.gallery);
+//                 },
+//                 icon: Icon(Icons.video_library),
+//                 label: Text('Gallery'),
+//               ),
+//               FlatButton.icon(
+//                 onPressed: () {
+//                   _record(ImageSource.camera);
+//                 },
+//                 icon: Icon(Icons.videocam),
+//                 label: Text('Camera'),
+//               ),
+//             ],
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }

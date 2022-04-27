@@ -33,9 +33,9 @@ class _PasswordsettingState extends State<Passwordsetting> {
               margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: Colors.black26),
-              ),
+                  color: Colors.white,
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(5)),
               child: Column(
                 children: [
                   Row(
@@ -67,7 +67,10 @@ class _PasswordsettingState extends State<Passwordsetting> {
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: Colors.white,
-                border: Border.all(color: Colors.black26),
+                border: Border(
+                    bottom: BorderSide(color: Colors.black26),
+                    left: BorderSide(color: Colors.black26),
+                    right: BorderSide(color: Colors.black26)),
               ),
               child: Column(
                 children: [
