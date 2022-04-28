@@ -37,6 +37,7 @@ dependencies:
   video_player: ^2.3.0
   file_picker: ^4.5.1
   snippet_coder_utils: ^1.0.12
+  flutter_vlc_player: ^7.1.1
 
 dev_dependencies:
   flutter_lints: ^1.0.0
@@ -58,6 +59,9 @@ flutter:
     - assets/video.mp4
     - images/Emma.jpg
     - images/User.jpg
+    - images/workplace1.jpg
+    - images/workplace2.jpg
+    - images/workplace3.jpg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

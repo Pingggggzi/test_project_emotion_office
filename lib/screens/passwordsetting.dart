@@ -23,7 +23,7 @@ class _PasswordsettingState extends State<Passwordsetting> {
                   MaterialPageRoute(builder: (ctx) => Setting()));
             }),
         title: Text("Settings"),
-        backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+        backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
         decoration: BoxDecoration(color: Colors.grey[100]),

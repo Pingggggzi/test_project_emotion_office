@@ -11,7 +11,7 @@ class _GeneralInfoSettingState extends State<GeneralInfoSetting> {
   String? valueChoose;
   List listItem = ['Single', 'Married', 'Divorced', 'Widowed', 'Separated'];
   DateTime date = DateTime(2022, 04, 15);
-  String gender = 'male';
+  String gender = 'Male';
   final TextEditingController firstName = TextEditingController();
   final TextEditingController lastName = TextEditingController();
 

@@ -16,7 +16,7 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 bool isLoading = false;
 String p =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -46,11 +46,8 @@ class _LoginState extends State<Login> {
           backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16.0);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ));
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (ctx) => HomePage()));
     } else {
       Fluttertoast.showToast(
           msg: "Login info incorrect!",
@@ -180,8 +177,8 @@ class _LoginState extends State<Login> {
                 isLoading == false
                     ? MyButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(builder: (ctx) => HomePage()));
+                          vaildation();
+                          login();
                         },
                         name: "Login",
                       )

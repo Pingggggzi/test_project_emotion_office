@@ -22,7 +22,7 @@ class _SettingState extends State<Setting> {
                   MaterialPageRoute(builder: (ctx) => HomePage()));
             }),
         title: Text("Setting Page"),
-        backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+        backgroundColor: Color.fromARGB(255, 52, 58, 64),
       ),
       body: Container(
         decoration: BoxDecoration(color: Colors.grey[100]),

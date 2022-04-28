@@ -104,7 +104,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -209,7 +209,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -314,7 +314,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -395,7 +395,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -476,7 +476,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -545,7 +545,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -587,7 +587,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Row(
@@ -664,7 +664,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(width: 1.0, color: Colors.black26),
+                        bottom: BorderSide(width: 1.0, color: Colors.black12),
                       ),
                     ),
                     child: Column(

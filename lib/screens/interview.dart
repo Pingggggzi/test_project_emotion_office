@@ -5,6 +5,7 @@ import 'package:chewie/chewie.dart';
 import 'package:test_project_emotion/screens/homepage.dart';
 import 'package:test_project_emotion/widgets/mybutton.dart';
 import 'package:video_player/video_player.dart';
+import 'package:flutter_vlc_player/flutter_vlc_player.dart';
 
 class Interview extends StatefulWidget {
   @override
@@ -14,6 +15,19 @@ class Interview extends StatefulWidget {
 class _InterviewState extends State<Interview> {
   PickedFile? _videoFile;
   final ImagePicker _picker = ImagePicker();
+  bool _isPlaying = true;
+  final VlcPlayerController _videoPlayerController = VlcPlayerController.asset(
+    'assets/video.mp4',
+    hwAcc: HwAcc.full,
+    autoPlay: true,
+    options: VlcPlayerOptions(),
+  );
+
+  // void dispose() async {
+  //   super.dispose();
+  //   await _videoPlayerController.stopRendererScanning();
+  //   // await _videoViewController.dispose();
+  // }
 
   _videoPic(ImageSource source) async {
     final pickedFile = await _picker.getVideo(source: source);
@@ -54,6 +68,65 @@ class _InterviewState extends State<Interview> {
           children: [
             Column(
               children: [
+                Column(
+                  children: [
+                    Container(
+                      color: Colors.black,
+                      margin: EdgeInsets.all(20),
+                      height: MediaQuery.of(context).size.height * (30 / 100),
+                      width: MediaQuery.of(context).size.width * (100 / 100),
+                      child: VlcPlayer(
+                        controller: _videoPlayerController,
+                        aspectRatio: 16 / 9,
+                        placeholder: Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            onPressed: () {},
+                            child: Icon(
+                              Icons.fast_rewind,
+                              color: Color.fromRGBO(50, 75, 205, 1),
+                            )),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              if (_isPlaying) {
+                                setState(() {
+                                  _isPlaying = false;
+                                });
+                                _videoPlayerController.pause();
+                              } else {
+                                setState(() {
+                                  _isPlaying = true;
+                                });
+                                _videoPlayerController.play();
+                              }
+                            },
+                            child: Icon(
+                              Icons.play_arrow,
+                              color: Color.fromRGBO(50, 75, 205, 1),
+                            )),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        TextButton(
+                            onPressed: () {},
+                            child: Icon(
+                              Icons.fast_forward,
+                              color: Color.fromRGBO(50, 75, 205, 1),
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
                 Container(
                   color: Colors.black,
                   margin: EdgeInsets.all(20),
@@ -92,7 +165,7 @@ class _InterviewState extends State<Interview> {
                             context: context,
                             builder: ((builder) => bottomSheet()),
                           );
-                        }))
+                        })),
               ],
             )
           ],
