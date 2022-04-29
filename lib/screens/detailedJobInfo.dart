@@ -1,13 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/homepage.dart';
 import 'package:test_project_emotion/screens/jobs.dart';
+import 'package:test_project_emotion/widgets/jobApplied.dart';
 
-class DetailedJobsInfo1 extends StatefulWidget {
-  @override
-  State<DetailedJobsInfo1> createState() => _DetailedJobsInfo1State();
-}
+class DetailedJobInfo extends StatelessWidget {
+  final String companyName;
+  final String jobName;
+  final String expertise;
+  final String salary;
+  final String jobScope;
+  final String jobRequirement;
+  final String companyOverview;
+  final String registrationNo;
+  final String location;
+  final String phoneNo;
+  final String email;
+  final String companySize;
+  final String others;
+  final String image;
+  DetailedJobInfo(
+      {required this.companyName,
+      required this.jobName,
+      required this.expertise,
+      required this.salary,
+      required this.jobScope,
+      required this.jobRequirement,
+      required this.companyOverview,
+      required this.registrationNo,
+      required this.location,
+      required this.phoneNo,
+      required this.email,
+      required this.companySize,
+      required this.others,
+      required this.image});
 
-class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
+  List<JobApplied> listJobApplied = [];
+  addJobApplied() {
+    listJobApplied.add(new JobApplied(
+      companyName: 'Brandt International Sdn Bhd',
+      jobName: 'Computer Hardware Engineer',
+      salary: 'RM 2000',
+    ));
+    // setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +71,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                         border:
                             Border(bottom: BorderSide(color: Colors.black12))),
                     child: Image(
-                      image: AssetImage("images/workplace1.jpg"),
+                      image: AssetImage(image),
                     ),
                   ),
                   SizedBox(
@@ -51,7 +87,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Statistician/Mathematician',
+                          jobName,
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
@@ -59,7 +95,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                           height: 10,
                         ),
                         Text(
-                          'Sunway Properties Sdn Bhd',
+                          companyName,
                           style: TextStyle(fontSize: 15),
                         )
                       ],
@@ -89,20 +125,15 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             'Expertise :',
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
                           ),
                           SizedBox(
                             height: 5,
                           ),
                           Text(
-                            'Actuarial',
+                            expertise,
                             style: TextStyle(fontSize: 15),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Science/Statistic',
-                            style: TextStyle(fontSize: 15),
+                            textAlign: TextAlign.center,
                           ),
                           SizedBox(
                             height: 10,
@@ -116,7 +147,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'RM 2800',
+                            salary,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -131,7 +162,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'tester',
+                            jobScope,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -146,7 +177,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'tester',
+                            jobRequirement,
                             style: TextStyle(fontSize: 15),
                           ),
                         ],
@@ -168,7 +199,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 10,
                           ),
                           Text(
-                            'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            companyOverview,
                             style: TextStyle(fontSize: 15),
                             textAlign: TextAlign.center,
                           )
@@ -199,7 +230,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'SPSB123',
+                            registrationNo,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -214,7 +245,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            location,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -229,7 +260,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            '0123336699',
+                            phoneNo,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -244,7 +275,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'admin@sunway.com',
+                            email,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -259,7 +290,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            '1-50 Employees',
+                            companySize,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -274,7 +305,7 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                             height: 5,
                           ),
                           Text(
-                            'Regular Hour, Monday - Friday, Casual',
+                            others,
                             style: TextStyle(fontSize: 15),
                           ),
                         ],
@@ -286,7 +317,77 @@ class _DetailedJobsInfo1State extends State<DetailedJobsInfo1> {
                       width: double.infinity,
                       padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                title: Text('Confirmation'),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      padding:
+                                          EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.black12),
+                                              top: BorderSide(
+                                                  color: Colors.black12))),
+                                      child: Text(
+                                        'Are you sure you want to apply this job ?',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.grey[800]),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            'Close',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.grey[800])),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            addJobApplied();
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (ctx) =>
+                                                            HomePage()));
+                                          },
+                                          child: Text(
+                                            'Yes, Apply',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Color.fromRGBO(
+                                                          50, 75, 205, 1))),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                )),
+                          );
+                        },
                         child: Text('Apply'),
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(

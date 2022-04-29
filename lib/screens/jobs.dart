@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_project_emotion/screens/detailedJobsInfo1.dart';
-import 'package:test_project_emotion/screens/detailedJobsInfo2.dart';
-import 'package:test_project_emotion/screens/detailedJobsInfo3.dart';
 import 'package:test_project_emotion/screens/homepage.dart';
+import 'package:test_project_emotion/screens/detailedJobInfo.dart';
 
 class Jobs extends StatefulWidget {
   // late final String text;
@@ -61,8 +59,23 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo2()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Brandt International Sdn Bhd',
+                            jobName: 'Training & Development',
+                            expertise: 'Training & Development',
+                            salary: 'RM 3600',
+                            jobScope: 'test',
+                            jobRequirement: 'test',
+                            companyOverview: '',
+                            registrationNo: 'BISB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '012333333',
+                            email: 'admin@brandt.com',
+                            companySize: '> 5000 Employees',
+                            others: '',
+                            image: 'images/workplace2.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -112,8 +125,23 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo2()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Brandt International Sdn Bhd',
+                            jobName: 'Computer Hardware Engineer',
+                            expertise: 'IT/Computer - Hardware',
+                            salary: 'RM 3000',
+                            jobScope: 'test',
+                            jobRequirement: 'test',
+                            companyOverview: '',
+                            registrationNo: 'BISB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '012333333',
+                            email: 'admin@brandt.com',
+                            companySize: '> 5000 Employees',
+                            others: '',
+                            image: 'images/workplace2.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -163,8 +191,23 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo3()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Telecontinent Sdn Bhd',
+                            jobName: 'Computer Hardware Engineer',
+                            expertise: 'IT/Computer - Hardware',
+                            salary: 'RM 3500',
+                            jobScope: 'test',
+                            jobRequirement: 'test',
+                            companyOverview: '',
+                            registrationNo: 'TSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123335858',
+                            email: 'admin@telecontinent.com',
+                            companySize: '',
+                            others: '',
+                            image: 'images/workplace3.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -214,8 +257,24 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo1()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Sunway Properties Sdn Bhd',
+                            jobName: 'Statistician/Mathematician',
+                            expertise: 'Actuarial\nScience/Statistic',
+                            salary: 'RM 2800',
+                            jobScope: 'tester',
+                            jobRequirement: 'tester',
+                            companyOverview:
+                                'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            registrationNo: 'SPSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123336699',
+                            email: 'admin@sunway.com',
+                            companySize: '1-50 Employees',
+                            others: 'Regular Hour, Monday - Friday, Casual',
+                            image: 'images/workplace1.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -265,8 +324,24 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo1()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Sunway Properties Sdn Bhd',
+                            jobName: 'Actuarial',
+                            expertise: 'Actuarial\nScience/Statistic',
+                            salary: 'RM 2000',
+                            jobScope: 'Job Scope',
+                            jobRequirement: 'Requirement',
+                            companyOverview:
+                                'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            registrationNo: 'SPSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123336699',
+                            email: 'admin@sunway.com',
+                            companySize: '1-50 Employees',
+                            others: 'Regular Hour, Monday - Friday, Casual',
+                            image: 'images/workplace1.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -316,8 +391,23 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo2()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Brandt International Sdn Bhd',
+                            jobName: 'Actuarial',
+                            expertise: 'Actuarial\nScience/Statistic',
+                            salary: 'RM 5000',
+                            jobScope: 'Job Scope',
+                            jobRequirement: 'Requirement',
+                            companyOverview: '',
+                            registrationNo: 'BISB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '012333333',
+                            email: 'admin@brandt.com',
+                            companySize: '> 5000 Employees',
+                            others: '',
+                            image: 'images/workplace2.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -367,8 +457,26 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo1()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Sunway Properties Sdn Bhd',
+                            jobName: 'Data Scientist',
+                            expertise: 'IT/Computer - Software',
+                            salary: '¥ 2000',
+                            jobScope:
+                                "1. Has performing to people, making people happy and giving people good memories / experience always been something that you are passionate about?\n2. Are you having difficulty in finding the right platform / stage for you to showcase your passion?\n3. Is horror movies your always go to genre?\nIf you say yes to all these, READ on!\nHauntu Malaysia is looking for part time actors/actresses\nYou need engage in immersive acting. Well, as mentioned, we are the most unique horror-themed immersive theatre in Malaysia. But don't worry if you don't already have experience in immersive acting, as training will be provided.\nYou need reset the theatre grounds for the next group of customers. Once again, don't worry as training will be provided.\nYou will need to deliver a fun and exciting experience for the customers while ensuring that the sessions are operated safely as per the standard operating procedure.\nYour are also required to maintain a clean, safe and orderly work environment. Anyways, no one likes adirty, messy and hazardous work place right?\nYou are also required to perform other duties as assigned and be punctual to work. And no one likes someone who shows up late for meetings either right?",
+                            jobRequirement:
+                                '1. Have performing experience\n2. Minimum 6 months commitment\n3. Speaks good English\n4. Someone who is fun, friendly, excellent team player and possesses a positive attitude\n5. Someone who is eager to learn\n6. Customer oriented\n7. Able to effectively communicate in one-on-one and with groups\n8. Able to work independently with minimal supervison\n9. Able to react fast to unforeseen circumstances\n10. Flexible in working hour/day',
+                            companyOverview:
+                                'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            registrationNo: 'SPSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123336699',
+                            email: 'admin@sunway.com',
+                            companySize: '1-50 Employees',
+                            others: 'Regular Hour, Monday - Friday, Casual',
+                            image: 'images/workplace1.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -418,8 +526,24 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo1()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Sunway Properties Sdn Bhd',
+                            jobName: 'Copywriter',
+                            expertise: 'Advertising/Media\nPlanning',
+                            salary: 'RM 3000',
+                            jobScope: 'Job Scope',
+                            jobRequirement: 'Requirement',
+                            companyOverview:
+                                'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            registrationNo: 'SPSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123336699',
+                            email: 'admin@sunway.com',
+                            companySize: '1-50 Employees',
+                            others: 'Regular Hour, Monday - Friday, Casual',
+                            image: 'images/workplace1.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -469,8 +593,24 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo1()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Sunway Properties Sdn Bhd',
+                            jobName: 'Training & Development',
+                            expertise: 'Training & Development',
+                            salary: 'RM 2000',
+                            jobScope: 'Job Scope',
+                            jobRequirement: 'Requirement',
+                            companyOverview:
+                                'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            registrationNo: 'SPSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123336699',
+                            email: 'admin@sunway.com',
+                            companySize: '1-50 Employees',
+                            others: 'Regular Hour, Monday - Friday, Casual',
+                            image: 'images/workplace1.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],
@@ -520,8 +660,24 @@ class _JobsState extends State<Jobs> {
             ),
             IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (ctx) => DetailedJobsInfo1()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (ctx) => DetailedJobInfo(
+                            companyName: 'Sunway Properties Sdn Bhd',
+                            jobName: 'Actuarial',
+                            expertise: 'Actuarial\nScience/Statistic',
+                            salary: 'RM 2000',
+                            jobScope: 'Job Scope',
+                            jobRequirement: 'Requirement\nasdasd',
+                            companyOverview:
+                                'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+                            registrationNo: 'SPSB123',
+                            location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                            phoneNo: '0123336699',
+                            email: 'admin@sunway.com',
+                            companySize: '1-50 Employees',
+                            others: 'Regular Hour, Monday - Friday, Casual',
+                            image: 'images/workplace1.jpg',
+                          )));
                 },
                 icon: Icon(Icons.more_horiz))
           ],

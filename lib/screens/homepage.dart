@@ -5,6 +5,7 @@ import 'package:test_project_emotion/screens/jobs.dart';
 import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/screens/profile.dart';
 import 'package:test_project_emotion/screens/setting.dart';
+import 'package:test_project_emotion/widgets/jobApplied.dart';
 import 'package:test_project_emotion/widgets/recording.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,6 +20,15 @@ class HomePageState extends State<HomePage> {
   // void initState() {
   //   super.initState();
   // }
+  List<JobApplied> listJobApplied = [];
+  addJobApplied() {
+    listJobApplied.add(new JobApplied(
+      companyName: 'Brandt International Sdn Bhd',
+      jobName: 'Computer Hardware Engineer',
+      salary: 'RM 2000',
+    ));
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,10 +199,16 @@ class HomePageState extends State<HomePage> {
                         ),
                         child: Row(
                           children: [
-                            Text(
-                              "No jobs applied...",
-                              textAlign: TextAlign.center,
-                            ),
+                            // Text(
+                            //   "No jobs applied...",
+                            //   textAlign: TextAlign.center,
+                            // ),
+                            Flexible(
+                                child: ListView.builder(
+                              itemCount: listJobApplied.length,
+                              itemBuilder: (_, index) => listJobApplied[index],
+                              shrinkWrap: true,
+                            )),
                           ],
                         ),
                       ),
