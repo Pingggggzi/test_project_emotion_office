@@ -178,7 +178,9 @@ class _LoginState extends State<Login> {
                     ? MyButton(
                         onPressed: () {
                           vaildation();
-                          login();
+                          // login();
+                          Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(builder: (ctx) => HomePage()));
                         },
                         name: "Login",
                       )

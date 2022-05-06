@@ -358,7 +358,7 @@ class HomePageState extends State<HomePage> {
                   settingColor = false;
                 });
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (ctx) => Interview()));
+                    MaterialPageRoute(builder: (ctx) => Jobprogress()));
               },
               leading: Icon(Icons.pending_actions),
               title: Text("Job Progress/ interview tem"),
