@@ -57,7 +57,7 @@ class _JobprogressState extends State<Jobprogress> {
               Container(
                 width: 60,
                 height: 2,
-                color: Colors.black,
+                color: Colors.orange,
               ),
               Container(
                 height: 30,
@@ -65,7 +65,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '2',
@@ -75,7 +75,7 @@ class _JobprogressState extends State<Jobprogress> {
               Container(
                 width: 60,
                 height: 2,
-                color: Colors.black,
+                color: Colors.grey,
               ),
               Container(
                 height: 30,
@@ -83,7 +83,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '3',
@@ -124,7 +124,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '4',
@@ -134,7 +134,7 @@ class _JobprogressState extends State<Jobprogress> {
               Container(
                 width: 60,
                 height: 2,
-                color: Colors.black,
+                color: Colors.grey,
               ),
               Container(
                 height: 30,
@@ -142,7 +142,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '5',
@@ -152,7 +152,7 @@ class _JobprogressState extends State<Jobprogress> {
               Container(
                 width: 60,
                 height: 2,
-                color: Colors.black,
+                color: Colors.grey,
               ),
               Container(
                 height: 30,
@@ -160,7 +160,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '6',
@@ -210,7 +210,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '7',
@@ -220,7 +220,7 @@ class _JobprogressState extends State<Jobprogress> {
               Container(
                 width: 60,
                 height: 2,
-                color: Colors.black,
+                color: Colors.grey,
               ),
               Container(
                 height: 30,
@@ -228,7 +228,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '8',
@@ -238,7 +238,7 @@ class _JobprogressState extends State<Jobprogress> {
               Container(
                 width: 60,
                 height: 2,
-                color: Colors.black,
+                color: Colors.grey,
               ),
               Container(
                 height: 30,
@@ -246,7 +246,7 @@ class _JobprogressState extends State<Jobprogress> {
                 margin: EdgeInsets.only(top: 5, bottom: 5),
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.orange,
+                    color: Colors.grey,
                     borderRadius: BorderRadius.circular(50)),
                 child: Text(
                   '9',
@@ -307,7 +307,11 @@ class _JobprogressState extends State<Jobprogress> {
               padding: EdgeInsets.all(10),
               color: Colors.grey[100],
               child: Column(
-                children: [buildjobProgress(), buildjobProgress()],
+                children: [
+                  buildjobProgress(),
+                  buildjobProgress(),
+                  buildjobProgress()
+                ],
               )),
         ],
       ),

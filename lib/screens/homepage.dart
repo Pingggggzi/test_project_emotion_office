@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/detailedJobAppliedInfo.dart';
+import 'package:test_project_emotion/screens/detailedJobInfo.dart';
 import 'package:test_project_emotion/screens/interview.dart';
 import 'package:test_project_emotion/screens/jobprogress.dart';
 import 'package:test_project_emotion/screens/jobs.dart';
@@ -30,6 +32,66 @@ class HomePageState extends State<HomePage> {
     setState(() {});
   }
 
+  buildJobApplied() {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black12),
+          borderRadius: BorderRadius.circular(5)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Column(
+            children: [
+              Text(
+                "Brandt International Sdn Bhd",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Text(
+                "Training & Development",
+                style: TextStyle(fontSize: 15),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "RM 3600",
+                style: TextStyle(fontSize: 13),
+              ),
+            ],
+          ),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (ctx) => DetailedJobAppliedInfo(
+                          companyName: 'Brandt International Sdn Bhd',
+                          jobName: 'Training & Development',
+                          expertise: 'Training & Development',
+                          salary: 'RM 3600',
+                          jobScope: 'test',
+                          jobRequirement: 'test',
+                          companyOverview: '',
+                          registrationNo: 'BISB123',
+                          location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                          phoneNo: '012333333',
+                          email: 'admin@brandt.com',
+                          companySize: '> 5000 Employees',
+                          others: '',
+                          image: 'images/workplace2.jpg',
+                        )));
+              },
+              icon: Icon(Icons.arrow_right))
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +105,7 @@ class HomePageState extends State<HomePage> {
           ),
           backgroundColor: Color.fromARGB(255, 52, 58, 64),
           title: Text(
-            "Dashboard",
+            "Home",
             style: TextStyle(fontSize: 18.0),
           ),
           bottom: PreferredSize(
@@ -71,7 +133,7 @@ class HomePageState extends State<HomePage> {
                       width: 80,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black26),
+                        border: Border.all(color: Colors.black12),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Column(
@@ -93,7 +155,7 @@ class HomePageState extends State<HomePage> {
                       width: 80,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black26),
+                        border: Border.all(color: Colors.black12),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Column(
@@ -115,7 +177,7 @@ class HomePageState extends State<HomePage> {
                       width: 80,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black26),
+                        border: Border.all(color: Colors.black12),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Column(
@@ -137,7 +199,7 @@ class HomePageState extends State<HomePage> {
                       width: 80,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        border: Border.all(color: Colors.black26),
+                        border: Border.all(color: Colors.black12),
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Column(
@@ -165,7 +227,7 @@ class HomePageState extends State<HomePage> {
                     height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: Colors.black26),
+                      border: Border.all(color: Colors.black12),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Row(
@@ -174,7 +236,8 @@ class HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           "Job Applied",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -192,13 +255,15 @@ class HomePageState extends State<HomePage> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border(
-                            bottom: BorderSide(color: Colors.black26),
-                            left: BorderSide(color: Colors.black26),
-                            right: BorderSide(color: Colors.black26),
+                            bottom: BorderSide(color: Colors.black12),
+                            left: BorderSide(color: Colors.black12),
+                            right: BorderSide(color: Colors.black12),
                           ),
                         ),
-                        child: Row(
+                        child: Column(
                           children: [
+                            buildJobApplied(),
+                            // buildJobApplied(),
                             // Text(
                             //   "No jobs applied...",
                             //   textAlign: TextAlign.center,
@@ -225,7 +290,7 @@ class HomePageState extends State<HomePage> {
                     height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: Colors.black26),
+                      border: Border.all(color: Colors.black12),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Row(
@@ -234,7 +299,8 @@ class HomePageState extends State<HomePage> {
                       children: [
                         Text(
                           "Interview Invitation",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
@@ -247,19 +313,28 @@ class HomePageState extends State<HomePage> {
                     children: [
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                        padding: EdgeInsets.all(10),
                         height: 200,
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border(
-                                bottom: BorderSide(color: Colors.black26),
-                                left: BorderSide(color: Colors.black26),
-                                right: BorderSide(color: Colors.black26))),
-                        child: Row(
+                                bottom: BorderSide(color: Colors.black12),
+                                left: BorderSide(color: Colors.black12),
+                                right: BorderSide(color: Colors.black12))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
                               "Invitation links here",
-                              textAlign: TextAlign.center,
+                              // textAlign: TextAlign.center,
                             ),
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (ctx) => Interview()));
+                                },
+                                child: Text('Test link'))
                           ],
                         ),
                       ),
