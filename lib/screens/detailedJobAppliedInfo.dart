@@ -214,7 +214,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Compant Information',
+                            'Company Information',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),

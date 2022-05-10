@@ -1,6 +1,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test_project_emotion/screens/employerSignUp.dart';
 import 'package:test_project_emotion/screens/signup.dart';
 import 'package:test_project_emotion/widgets/changescreen.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
@@ -194,11 +195,83 @@ class _LoginState extends State<Login> {
                     name: "SignUp",
                     whichAccount: "No Account?",
                     onTap: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (ctx) => SignUp(),
-                        ),
-                      );
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: Text('Confirmation'),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      padding:
+                                          EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.black12),
+                                              top: BorderSide(
+                                                  color: Colors.black12))),
+                                      child: Text(
+                                        'Are you want to register as a employer or candidate ?',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.grey[800]),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (ctx) =>
+                                                            EmployerSignUp()));
+                                          },
+                                          child: Text(
+                                            'Employer',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.orange)),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (ctx) =>
+                                                            SignUp()));
+                                          },
+                                          child: Text(
+                                            'Candidate',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Color.fromRGBO(
+                                                          50, 75, 205, 1))),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ));
+                      // Navigator.of(context).pushReplacement(
+                      //   MaterialPageRoute(
+                      //     builder: (ctx) => SignUp(),
+                      //   ),
+                      // );
                     }),
               ],
             ),

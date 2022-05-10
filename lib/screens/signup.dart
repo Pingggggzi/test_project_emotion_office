@@ -302,11 +302,7 @@ class _SignUpState extends State<SignUp> {
             name: "Login",
             whichAccount: "Register Already?",
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (ctx) => Login(),
-                ),
-              );
+              Navigator.of(context).pop();
             },
           ),
         ],
