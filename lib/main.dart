@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/dashboard.dart';
 import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/widgets/educationForm.dart';
 import 'package:test_project_emotion/widgets/experienceForm.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(builder: (context, snapshot) {
-      return MaterialApp(home: Login());
+      return MaterialApp(home: Dashboard());
     });
   }
 }

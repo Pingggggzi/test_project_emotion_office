@@ -232,7 +232,18 @@ class _EmployerSignUpState extends State<EmployerSignUp> {
         password.text.isEmpty &&
         confirmationPassword.text.isEmpty &&
         firstName.text.isEmpty &&
-        lastName.text.isEmpty) {
+        lastName.text.isEmpty &&
+        companyName.text.isEmpty &&
+        registerNo.text.isEmpty &&
+        address.text.isEmpty &&
+        postcode.text.isEmpty &&
+        addressOffice.text.isEmpty &&
+        postcodeOffice.text.isEmpty &&
+        phoneOffice.text.isEmpty &&
+        emailOffice.text.isEmpty &&
+        namePIC.text.isEmpty &&
+        phonePIC.text.isEmpty &&
+        emailPIC.text.isEmpty) {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
           content: Text("All flied are empty"),
@@ -284,6 +295,72 @@ class _EmployerSignUpState extends State<EmployerSignUp> {
       _scaffoldKeyEmployer.currentState!.showSnackBar(
         SnackBar(
           content: Text("Last Name is empty "),
+        ),
+      );
+    } else if (companyName.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Company Name is empty'),
+        ),
+      );
+    } else if (registerNo.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Registration No is empty'),
+        ),
+      );
+    } else if (address.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Registered Address is empty'),
+        ),
+      );
+    } else if (postcode.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Postcode of Registered Address is empty'),
+        ),
+      );
+    } else if (addressOffice.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Company Address is empty'),
+        ),
+      );
+    } else if (postcodeOffice.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Postcode of Company Address is empty'),
+        ),
+      );
+    } else if (phoneOffice.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Company Phone is empty'),
+        ),
+      );
+    } else if (emailOffice.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('Company Email is empty'),
+        ),
+      );
+    } else if (namePIC.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('PIC Name is empty'),
+        ),
+      );
+    } else if (phonePIC.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('PIC Phone is empty'),
+        ),
+      );
+    } else if (emailPIC.text.isEmpty) {
+      _scaffoldKeyEmployer.currentState!.showSnackBar(
+        SnackBar(
+          content: Text('PIC Email is empty'),
         ),
       );
     } else {
