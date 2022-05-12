@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/employerSignUp.dart';
 import 'package:test_project_emotion/screens/login.dart';
+import 'package:test_project_emotion/screens/signup.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
 
 class JobItem {
@@ -11,6 +13,19 @@ class JobItem {
     required this.assetImage,
     required this.jobName,
     required this.companyName,
+  });
+}
+
+class CompanyItem {
+  final String assetImage;
+
+  final String companyName;
+  final String website;
+
+  const CompanyItem({
+    required this.assetImage,
+    required this.companyName,
+    required this.website,
   });
 }
 
@@ -127,9 +142,25 @@ class _DashboardState extends State<Dashboard> {
     ),
   ];
 
+  List<CompanyItem> itemsCompany = [
+    CompanyItem(
+        assetImage: 'images/workplace1.jpg',
+        companyName: 'Sunway Properties Sdn Bhd',
+        website: 'www.hiremen.cn'),
+    CompanyItem(
+        assetImage: 'images/workplace2.jpg',
+        companyName: 'Brandt International Sdn Bhd',
+        website: ''),
+    CompanyItem(
+        assetImage: 'images/workplace3.jpg',
+        companyName: 'Telecontinent Sdn Bhd',
+        website: ''),
+  ];
+
   Widget buildJob({required JobItem item}) {
     return Container(
-      width: 200,
+      width: 220,
+      padding: EdgeInsets.all(10),
       color: Colors.white,
       child: Column(
         children: [
@@ -162,6 +193,42 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  Widget buildCompany({required CompanyItem itemCompany}) {
+    return Container(
+      width: 220,
+      padding: EdgeInsets.all(10),
+      color: Colors.white,
+      child: Column(
+        children: [
+          Expanded(
+              child: AspectRatio(
+            aspectRatio: 4 / 3,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image(
+                image: AssetImage(
+                  itemCompany.assetImage,
+                ),
+                fit: BoxFit.cover,
+              ),
+            ),
+          )),
+          SizedBox(
+            height: 5,
+          ),
+          Text(
+            itemCompany.companyName,
+            style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            itemCompany.website,
+            style: TextStyle(fontSize: 13),
+          )
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,7 +248,76 @@ class _DashboardState extends State<Dashboard> {
                     style: TextStyle(fontSize: 15),
                   )),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text('Confirmation'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                    decoration: BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.black12),
+                                            top: BorderSide(
+                                                color: Colors.black12))),
+                                    child: Text(
+                                      'Are you want to register as a employer or candidate ?',
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey[800]),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (ctx) =>
+                                                      EmployerSignUp()));
+                                        },
+                                        child: Text(
+                                          'Employer',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Colors.orange)),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pushReplacement(
+                                              MaterialPageRoute(
+                                                  builder: (ctx) => SignUp()));
+                                        },
+                                        child: Text(
+                                          'Candidate',
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        style: ButtonStyle(
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    Color.fromRGBO(
+                                                        50, 75, 205, 1))),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ));
+                  },
                   child: Text(
                     'Register',
                     style: TextStyle(fontSize: 15),
@@ -196,12 +332,16 @@ class _DashboardState extends State<Dashboard> {
           Container(
             margin: EdgeInsets.all(10),
             height: 200,
-            color: Colors.black,
-            child: Image(image: AssetImage('images/dashboard1.jpg')),
+            child: AspectRatio(
+                aspectRatio: 4 / 3,
+                child: Image(
+                  image: AssetImage('images/dashboard1.jpg'),
+                  fit: BoxFit.cover,
+                )),
             // child: Carousel(
             //   dotColor: Colors.white,
             //   dotBgColor: Colors.black,
-            //   dotIncreasedColor: Colors.blue,
+            //   dotIncreasedColor: Color.fromRGBO(50, 75, 205, 1),,
             //   dotSize: 20,
             //   dotIncreaseSize: 10,
             //   autoplay: true,
@@ -368,6 +508,195 @@ class _DashboardState extends State<Dashboard> {
                         itemBuilder: ((context, index) =>
                             buildJob(item: items[index]))),
                   )
+                ]),
+          ),
+          Container(
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(15),
+            height: 300,
+            color: Colors.white,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  'Top Companies',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 160,
+                  child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 3,
+                      separatorBuilder: (context, _) => SizedBox(
+                            width: 10,
+                          ),
+                      itemBuilder: ((context, index) =>
+                          buildCompany(itemCompany: itemsCompany[index]))),
+                )
+              ],
+            ),
+          ),
+          Container(
+            height: 700,
+            color: Color.fromRGBO(50, 75, 205, 1),
+            margin: EdgeInsets.all(10),
+            padding: EdgeInsets.all(15),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Benefits',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 280,
+                    width: double.infinity,
+                    color: Colors.white,
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Jobseeker Benefits',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(50, 75, 205, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                '. No travel and exposure to infection risks',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                ". Complete your interview when you're at your best time and peak energy",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '. Find your best job through AI-driven match',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '. Showcase your skills through video recordings as part of your online resume',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '. Identify reputable employers',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ]),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Learn More'),
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Color.fromRGBO(50, 75, 205, 1))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    height: 320,
+                    width: double.infinity,
+                    color: Colors.white,
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Employer Benefits',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color.fromRGBO(50, 75, 205, 1),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                '. Automate the first-level interview and let AI filter for the best candidates',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                ". Automated emotional screening and personality analysis",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '. Get your management team to do joint follow-up interviews through built-in web conferencing',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '. Combine human and AI ratings to uncover the best candidates',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '. Integrated background search to verify candidates',
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ]),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Learn More'),
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Color.fromRGBO(50, 75, 205, 1))),
+                        )
+                      ],
+                    ),
+                  ),
                 ]),
           )
         ],
