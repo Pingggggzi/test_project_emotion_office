@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/candidate.dart';
 import 'package:test_project_emotion/screens/companyProfile.dart';
 import 'package:test_project_emotion/screens/employerSetting.dart';
 import 'package:test_project_emotion/screens/login.dart';
+import 'package:test_project_emotion/screens/questionPage.dart';
+import 'package:test_project_emotion/widgets/barChart.dart';
 
 class EmployerHomepage extends StatefulWidget {
   @override
@@ -95,8 +98,8 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                   jobsColor = false;
                   settingColor = false;
                 });
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Jobprogress()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (ctx) => Candidate()));
               },
               leading: Icon(Icons.people),
               title: Text("Candidate"),
@@ -111,8 +114,8 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                   jobsColor = false;
                   settingColor = false;
                 });
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Jobs()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (ctx) => QuestionPage()));
               },
               leading: Icon(Icons.question_answer),
               title: Text("Questions"),
@@ -475,7 +478,9 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                     children: [
                       Container(
                         height: 300,
+                        padding: EdgeInsets.all(30),
                         color: Colors.white,
+                        child: BarChartWidget(),
                       )
                     ],
                   ),
