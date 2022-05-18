@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/advertise.dart';
 import 'package:test_project_emotion/screens/candidate.dart';
 import 'package:test_project_emotion/screens/companyProfile.dart';
 import 'package:test_project_emotion/screens/employerSetting.dart';
@@ -130,8 +131,8 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                   jobsColor = false;
                   settingColor = false;
                 });
-                // Navigator.of(context).pushReplacement(
-                //     MaterialPageRoute(builder: (ctx) => Jobs()));
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (ctx) => Advertise()));
               },
               leading: Icon(Icons.inventory),
               title: Text("Advertise"),
@@ -300,7 +301,9 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                 Container(
                   width: double.infinity,
                   margin: EdgeInsets.all(15),
-                  color: Color.fromRGBO(50, 171, 207, 1),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 23, 162, 184),
+                      borderRadius: BorderRadius.circular(5)),
                   child: ExpansionTile(
                     title: Text(
                       'Candidate Status',
@@ -311,7 +314,11 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                       Container(
                         height: 300,
                         padding: EdgeInsets.all(10),
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(5),
+                                bottomRight: Radius.circular(5))),
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -396,7 +403,9 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                 Container(
                   width: double.infinity,
                   margin: EdgeInsets.all(15),
-                  color: Color.fromRGBO(50, 171, 207, 1),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 23, 162, 184),
+                      borderRadius: BorderRadius.circular(5)),
                   child: ExpansionTile(
                     title: Text(
                       'Candidate Gender',
@@ -406,7 +415,11 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                     children: [
                       Container(
                         height: 300,
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(5),
+                                bottomRight: Radius.circular(5))),
                         padding: EdgeInsets.all(10),
                         child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -468,7 +481,9 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                 Container(
                   width: double.infinity,
                   margin: EdgeInsets.all(15),
-                  color: Color.fromRGBO(50, 171, 207, 1),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 23, 162, 184),
+                      borderRadius: BorderRadius.circular(5)),
                   child: ExpansionTile(
                     title: Text(
                       'Candidate Group Age',
@@ -478,8 +493,13 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
                     children: [
                       Container(
                         height: 300,
+                        width: double.infinity,
                         padding: EdgeInsets.all(30),
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(5),
+                                bottomRight: Radius.circular(5))),
                         child: BarChartWidget(),
                       )
                     ],

@@ -762,7 +762,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
                           ),
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
-                            Color.fromRGBO(50, 171, 207, 1),
+                            Color.fromARGB(255, 23, 162, 184),
                           )),
                         ),
                         SizedBox(
