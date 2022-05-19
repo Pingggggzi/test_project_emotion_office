@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/companyVerify.dart';
 import 'package:test_project_emotion/screens/employerHomepage.dart';
 
 class EmployerSetting extends StatefulWidget {
@@ -90,8 +91,8 @@ class _EmployerSettingState extends State<EmployerSetting> {
                       size: 25,
                     ),
                     onPressed: () {
-                      // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      //     builder: (ctx) => Passwordsetting()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (ctx) => CompanyVerification()));
                     },
                   )
                 ],

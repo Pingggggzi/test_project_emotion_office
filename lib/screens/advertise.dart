@@ -85,11 +85,15 @@ class _AdvertiseState extends State<Advertise> {
   late String salary;
   late String date;
 
-  Widget buildAdvertisement({required companyName, required jobName}) {
+  Widget buildAdvertisement(
+      {required companyName,
+      required jobName,
+      required salary,
+      required date}) {
     return Container(
       height: 150,
       width: double.infinity,
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.only(left: 10, right: 10, top: 10),
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           border: Border.all(color: Colors.black12),
@@ -98,24 +102,26 @@ class _AdvertiseState extends State<Advertise> {
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Text(
           companyName,
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
           jobName,
-          style: TextStyle(fontSize: 16),
+          style: TextStyle(
+            fontSize: 16,
+          ),
         ),
         Text(
-          'RM 3600',
+          salary,
           style: TextStyle(fontSize: 14),
         ),
         SizedBox(
           height: 10,
         ),
         Text(
-          '14 April 2022',
+          date,
           style: TextStyle(fontSize: 14),
         ),
       ]),
@@ -210,10 +216,47 @@ class _AdvertiseState extends State<Advertise> {
               ),
               buildAdvertisement(
                   companyName: 'Brandt International Sdn Bhd',
-                  jobName: 'Training & Development'),
+                  jobName: 'Training & Development',
+                  salary: 'RM 3600',
+                  date: '14 April 2022'),
               buildAdvertisement(
                   companyName: 'Brandt International Sdn Bhd',
-                  jobName: 'Computer Hardware Engineer'),
+                  jobName: 'Computer Hardware Engineer',
+                  salary: 'RM 3000',
+                  date: '14 April 2022'),
+              buildAdvertisement(
+                  companyName: 'Sunway Properties Sdn Bhd',
+                  jobName: 'Actuarial',
+                  salary: 'RM 2000',
+                  date: '21 December 2021'),
+              buildAdvertisement(
+                  companyName: 'Brandt International Sdn Bhd',
+                  jobName: 'Actuarial',
+                  salary: 'RM 5000',
+                  date: '06 December 2021'),
+              buildAdvertisement(
+                  companyName: 'Sunway Properties Sdn Bhd',
+                  jobName: 'Data Scientist',
+                  salary: 'RM 2000',
+                  date: '29 November 2021'),
+              buildAdvertisement(
+                  companyName: 'Sunway Properties Sdn Bhd',
+                  jobName: 'Copywriter',
+                  salary: 'RM 3000',
+                  date: '19 November 2021'),
+              buildAdvertisement(
+                  companyName: 'Sunway Properties Sdn Bhd',
+                  jobName: 'Training & Development',
+                  salary: 'RM 2000',
+                  date: '19 November 2021'),
+              buildAdvertisement(
+                  companyName: 'Sunway Properties Sdn Bhd',
+                  jobName: 'Actuarial',
+                  salary: 'RM 2000',
+                  date: '11 November 2021'),
+              SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ),
