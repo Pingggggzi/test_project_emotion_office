@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:test_project_emotion/screens/employerHomepage.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 
@@ -99,6 +102,32 @@ class _CompanyProfileState extends State<CompanyProfile> {
     'Monday - Sunday'
   ];
   List listDressCode = ['Formal', 'Semi-Formal', 'Smart Casual', 'Casual'];
+  File? imageLogo;
+  File? imageBanner;
+  Future pickImageLogo() async {
+    final imageLogo =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (imageLogo == null) return;
+
+    final imageLogoTemporary = File(imageLogo.path);
+
+    setState(() {
+      this.imageLogo = imageLogoTemporary;
+    });
+  }
+
+  Future pickImageBanner() async {
+    final imageBanner =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (imageBanner == null) return;
+
+    final imageBannerTemporary = File(imageBanner.path);
+    setState(() {
+      this.imageBanner = imageBannerTemporary;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,47 +170,64 @@ class _CompanyProfileState extends State<CompanyProfile> {
                                 border: Border.all(
                                     color: Color.fromARGB(255, 219, 214, 214),
                                     width: 3.0)),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.upload),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'UPLOAD COMPANY BANNER',
-                                        style: TextStyle(color: Colors.black),
-                                      ))
-                                ]),
+                            child: imageBanner != null
+                                ? Image.file(
+                                    imageBanner!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        Icon(Icons.upload),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        TextButton(
+                                            onPressed: () {
+                                              pickImageBanner();
+                                            },
+                                            child: Text(
+                                              'UPLOAD COMPANY BANNER',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            )),
+                                      ]),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Container(
-                            height: 100,
-                            width: 100,
+                            height: 110,
+                            width: 110,
+                            padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 border: Border.all(
                                     color: Color.fromARGB(255, 219, 214, 214),
                                     width: 3.0),
                                 borderRadius: BorderRadius.circular(20)),
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.upload),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'UPLOAD COMPANY LOGO',
-                                        style: TextStyle(color: Colors.black),
-                                        textAlign: TextAlign.center,
-                                      )),
-                                ]),
+                            child: imageLogo != null
+                                ? Image.file(
+                                    imageLogo!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        Icon(Icons.upload),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
+                                        TextButton(
+                                            onPressed: () {
+                                              pickImageLogo();
+                                            },
+                                            child: Text(
+                                              'UPLOAD COMPANY LOGO',
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                              textAlign: TextAlign.center,
+                                            )),
+                                      ]),
                           ),
                           SizedBox(
                             height: 20,

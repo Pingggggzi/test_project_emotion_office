@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/addJobAdvertise.dart';
 import 'package:test_project_emotion/screens/employerHomepage.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 
@@ -154,7 +155,7 @@ class _AdvertiseState extends State<Advertise> {
           child: ListView(
             children: [
               Container(
-                height: 200,
+                height: 260,
                 width: double.infinity,
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
@@ -162,6 +163,19 @@ class _AdvertiseState extends State<Advertise> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (ctx) =>
+                                            AddJobAdvertisement()));
+                              },
+                              icon: Icon(Icons.add))
+                        ],
+                      ),
                       Text(
                         'Search Input',
                         style: TextStyle(fontSize: 16),

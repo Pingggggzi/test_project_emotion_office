@@ -191,22 +191,25 @@ class _QuestionPageState extends State<QuestionPage> {
                                               Container(
                                                 width: double.infinity,
                                                 height: 60,
-                                                padding: EdgeInsets.all(10),
+                                                padding:
+                                                    EdgeInsets.only(left: 10),
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     border: Border.all(
-                                                        color: Colors.black38),
+                                                        color: Colors.black45),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             5)),
-                                                child: Row(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
                                                   children: [
                                                     DropdownButton(
-                                                      isExpanded: false,
+                                                      isExpanded: true,
                                                       hint: Text(
                                                         "Choose Category",
                                                         style: TextStyle(
-                                                          color: Colors.black87,
+                                                          color: Colors.black54,
                                                           fontSize: 16,
                                                         ),
                                                       ),
@@ -255,7 +258,7 @@ class _QuestionPageState extends State<QuestionPage> {
                                                 decoration: BoxDecoration(
                                                     color: Colors.white,
                                                     border: Border.all(
-                                                        color: Colors.black38),
+                                                        color: Colors.black45),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             5)),
@@ -265,7 +268,7 @@ class _QuestionPageState extends State<QuestionPage> {
                                                       hint: Text(
                                                         "Choose Type",
                                                         style: TextStyle(
-                                                          color: Colors.black87,
+                                                          color: Colors.black54,
                                                           fontSize: 16,
                                                         ),
                                                       ),
