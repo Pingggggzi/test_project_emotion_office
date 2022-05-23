@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:test_project_emotion/screens/advertise.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 
@@ -11,6 +12,12 @@ class _AddJobAdvertisementState extends State<AddJobAdvertisement> {
   final TextEditingController salary = TextEditingController();
   final TextEditingController requirement = TextEditingController();
   final TextEditingController jobScope = TextEditingController();
+  double rating1 = 0;
+  double rating2 = 0;
+  double rating3 = 0;
+  double rating4 = 0;
+  double rating5 = 0;
+  double rating6 = 0;
   String? expertise;
   String? jobRoles;
   String? employment;
@@ -541,7 +548,152 @@ class _AddJobAdvertisementState extends State<AddJobAdvertisement> {
                     SizedBox(
                       height: 5,
                     ),
-                    Container(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Introversion : $rating1',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        RatingBar.builder(
+                            minRating: 1,
+                            itemSize: 25,
+                            itemCount: 10,
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.circle,
+                                  color: Color.fromARGB(255, 23, 162, 184),
+                                ),
+                            updateOnDrag: true,
+                            onRatingUpdate: (rating) {
+                              setState(() {
+                                this.rating1 = rating;
+                              });
+                            }),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Extraversion : $rating2',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        RatingBar.builder(
+                            minRating: 1,
+                            itemSize: 25,
+                            itemCount: 10,
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.circle,
+                                  color: Color.fromARGB(255, 23, 162, 184),
+                                ),
+                            updateOnDrag: true,
+                            onRatingUpdate: (rating) {
+                              setState(() {
+                                this.rating2 = rating;
+                              });
+                            }),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Neuroticism : $rating3',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        RatingBar.builder(
+                            minRating: 1,
+                            itemSize: 25,
+                            itemCount: 10,
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.circle,
+                                  color: Color.fromARGB(255, 23, 162, 184),
+                                ),
+                            updateOnDrag: true,
+                            onRatingUpdate: (rating) {
+                              setState(() {
+                                this.rating3 = rating;
+                              });
+                            }),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Agreeableness : $rating4',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        RatingBar.builder(
+                            minRating: 1,
+                            itemSize: 25,
+                            itemCount: 10,
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.circle,
+                                  color: Color.fromARGB(255, 23, 162, 184),
+                                ),
+                            updateOnDrag: true,
+                            onRatingUpdate: (rating) {
+                              setState(() {
+                                this.rating4 = rating;
+                              });
+                            }),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Conscientiousness : $rating5',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        RatingBar.builder(
+                            minRating: 1,
+                            itemSize: 25,
+                            itemCount: 10,
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.circle,
+                                  color: Color.fromARGB(255, 23, 162, 184),
+                                ),
+                            updateOnDrag: true,
+                            onRatingUpdate: (rating) {
+                              setState(() {
+                                this.rating5 = rating;
+                              });
+                            }),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Openness : $rating6',
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        RatingBar.builder(
+                            minRating: 1,
+                            itemSize: 25,
+                            itemCount: 10,
+                            itemBuilder: (context, _) => Icon(
+                                  Icons.circle,
+                                  color: Color.fromARGB(255, 23, 162, 184),
+                                ),
+                            updateOnDrag: true,
+                            onRatingUpdate: (rating) {
+                              setState(() {
+                                this.rating6 = rating;
+                              });
+                            }),
+                      ],
+                    ),
                     SizedBox(
                       height: 10,
                     ),
