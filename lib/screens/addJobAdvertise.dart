@@ -389,6 +389,8 @@ class _AddJobAdvertisementState extends State<AddJobAdvertisement> {
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.black12))),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -699,6 +701,34 @@ class _AddJobAdvertisementState extends State<AddJobAdvertisement> {
                     ),
                   ],
                 ),
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: double.infinity,
+                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+                      )),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Save Draft',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(255, 23, 162, 184))),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ]),
               )
             ],
           ),

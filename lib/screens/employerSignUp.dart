@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test_project_emotion/screens/employerHomepage.dart';
 import 'package:test_project_emotion/screens/homepage.dart';
 import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/widgets/changescreen.dart';
@@ -220,8 +221,8 @@ class _EmployerSignUpState extends State<EmployerSignUp> {
       print(error);
     }
 
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (ctx) => HomePage()));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (ctx) => EmployerHomepage()));
     setState(() {
       isLoading = false;
     });
@@ -812,6 +813,17 @@ class _EmployerSignUpState extends State<EmployerSignUp> {
       body: ListView(
         shrinkWrap: true,
         children: [
+          Container(
+            child: Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Icons.arrow_back))
+              ],
+            ),
+          ),
           Container(
             height: 150,
             child: Column(

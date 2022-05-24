@@ -317,6 +317,15 @@ class _SignUpState extends State<SignUp> {
       body: ListView(
         children: [
           Container(
+            child: Row(children: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.arrow_back))
+            ]),
+          ),
+          Container(
             height: 150,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
