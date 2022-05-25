@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:test_project_emotion/screens/companyDash.dart';
 import 'package:test_project_emotion/screens/employerSignUp.dart';
+import 'package:test_project_emotion/screens/jobDash.dart';
 import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/screens/signup.dart';
 // import 'package:carousel_pro/carousel_pro.dart';
@@ -229,269 +232,341 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
+  final isDialOpen = ValueNotifier(false);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('HIREMEN'),
-        backgroundColor: Color.fromARGB(255, 52, 58, 64),
-        actions: [
-          Row(
-            children: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (ctx) => Login()));
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 15),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                              title: Text('Confirmation'),
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                                    decoration: BoxDecoration(
-                                        border: Border(
-                                            bottom: BorderSide(
-                                                color: Colors.black12),
-                                            top: BorderSide(
-                                                color: Colors.black12))),
-                                    child: Text(
-                                      'Are you want to register as a employer or candidate ?',
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.grey[800]),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pushReplacement(
-                                              MaterialPageRoute(
-                                                  builder: (ctx) =>
-                                                      EmployerSignUp()));
-                                        },
-                                        child: Text(
-                                          'Employer',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Colors.orange)),
-                                      ),
-                                      ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pushReplacement(
-                                              MaterialPageRoute(
-                                                  builder: (ctx) => SignUp()));
-                                        },
-                                        child: Text(
-                                          'Candidate',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    Color.fromRGBO(
-                                                        50, 75, 205, 1))),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ));
-                  },
-                  child: Text(
-                    'Register',
-                    style: TextStyle(fontSize: 15),
-                  )),
-            ],
-          )
-        ],
-      ),
-      body: ListView(
-        shrinkWrap: true,
-        children: [
-          Container(
-            margin: EdgeInsets.all(10),
-            height: 200,
-            child: AspectRatio(
-                aspectRatio: 4 / 3,
-                child: Image(
-                  image: AssetImage('images/dashboard1.jpg'),
-                  fit: BoxFit.cover,
-                )),
-            // child: Carousel(
-            //   dotColor: Colors.white,
-            //   dotBgColor: Colors.black,
-            //   dotIncreasedColor: Color.fromRGBO(50, 75, 205, 1),,
-            //   dotSize: 20,
-            //   dotIncreaseSize: 10,
-            //   autoplay: true,
-            //   images: [
-            //     AssetImage('images/dashboard1.jpg'),
-            //     AssetImage('images/dashboard3.jpg'),
-            //   ],
-            // ),
-          ),
-          Container(
-            height: 320,
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black26),
-              borderRadius: BorderRadius.circular(5),
+    return WillPopScope(
+      onWillPop: () async {
+        if (isDialOpen.value) {
+          isDialOpen.value = false;
+
+          return false;
+        } else {
+          return true;
+        }
+      },
+      child: Scaffold(
+        floatingActionButton: SpeedDial(
+          animatedIcon: AnimatedIcons.menu_close,
+          backgroundColor: Color.fromARGB(255, 52, 58, 64),
+          overlayColor: Colors.black,
+          overlayOpacity: 0.4,
+          spacing: 10,
+          spaceBetweenChildren: 10,
+          closeManually: true,
+          openCloseDial: isDialOpen,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.work),
+              backgroundColor: Color.fromRGBO(50, 75, 205, 1),
+              label: 'Jobs',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (ctx) => JobDash())),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+            SpeedDialChild(
+              child: Icon(Icons.business),
+              backgroundColor: Color.fromARGB(255, 23, 162, 184),
+              label: 'Companies',
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (ctx) => CompanyDash())),
+            ),
+          ],
+        ),
+        appBar: AppBar(
+          title: Text('HIREMEN'),
+          backgroundColor: Color.fromARGB(255, 52, 58, 64),
+          actions: [
+            Row(
               children: [
-                Text(
-                  'Search Input',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextField(
-                    controller: search,
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.search,
-                          color: Colors.black26,
-                        ),
-                        // suffixIcon:
-                        //     ? GestureDetector(
-                        //         child: Icon(
-                        //           Icons.close,
-                        //           color: Colors.black26,
-                        //         ),
-                        //         onTap: () {
-                        //           search.clear();
-                        //           widget.onChanged('');
-                        //         },
-                        //       )
-                        //     : null,
-                        hintText: 'Search...',
-                        border: InputBorder.none),
-                    // onChanged: widget.onChanged,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Area',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextField(
-                    controller: area,
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.search,
-                          color: Colors.black26,
-                        ),
-                        hintText: 'Area...',
-                        border: InputBorder.none),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'Job Specializations',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black26),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: DropdownButton(
-                    isExpanded: true,
-                    hint: Text(
-                      "Select Job Specializations ...",
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: 16,
-                      ),
-                    ),
-                    underline: SizedBox(),
-                    style: TextStyle(color: Colors.black, fontSize: 16),
-                    value: valueChoose,
-                    onChanged: (val) {
-                      setState(() {
-                        valueChoose = val as String;
-                      });
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (ctx) => Login()));
                     },
-                    items: listItem.map((valueItem) {
-                      return DropdownMenuItem(
-                        value: valueItem,
-                        child: Text(valueItem),
-                      );
-                    }).toList(),
-                  ),
-                ),
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 15),
+                    )),
+                TextButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                                title: Text('Confirmation'),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      padding:
+                                          EdgeInsets.fromLTRB(0, 10, 0, 10),
+                                      decoration: BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.black12),
+                                              top: BorderSide(
+                                                  color: Colors.black12))),
+                                      child: Text(
+                                        'Are you want to register as a employer or candidate ?',
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.grey[800]),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (ctx) =>
+                                                            EmployerSignUp()));
+                                          },
+                                          child: Text(
+                                            'Employer',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.orange)),
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (ctx) =>
+                                                            SignUp()));
+                                          },
+                                          child: Text(
+                                            'Candidate',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  MaterialStateProperty.all(
+                                                      Color.fromRGBO(
+                                                          50, 75, 205, 1))),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ));
+                    },
+                    child: Text(
+                      'Register',
+                      style: TextStyle(fontSize: 15),
+                    )),
               ],
+            )
+          ],
+        ),
+        body: ListView(
+          shrinkWrap: true,
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              height: 200,
+              child: AspectRatio(
+                  aspectRatio: 4 / 3,
+                  child: Image(
+                    image: AssetImage('images/dashboard1.jpg'),
+                    fit: BoxFit.cover,
+                  )),
+              // child: Carousel(
+              //   dotColor: Colors.white,
+              //   dotBgColor: Colors.black,
+              //   dotIncreasedColor: Color.fromRGBO(50, 75, 205, 1),,
+              //   dotSize: 20,
+              //   dotIncreaseSize: 10,
+              //   autoplay: true,
+              //   images: [
+              //     AssetImage('images/dashboard1.jpg'),
+              //     AssetImage('images/dashboard3.jpg'),
+              //   ],
+              // ),
             ),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(15),
-            height: 260,
-            color: Colors.grey[200],
-            child: Column(
+            Container(
+              height: 320,
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black26),
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Search Input',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: TextField(
+                      controller: search,
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.search,
+                            color: Colors.black26,
+                          ),
+                          // suffixIcon:
+                          //     ? GestureDetector(
+                          //         child: Icon(
+                          //           Icons.close,
+                          //           color: Colors.black26,
+                          //         ),
+                          //         onTap: () {
+                          //           search.clear();
+                          //           widget.onChanged('');
+                          //         },
+                          //       )
+                          //     : null,
+                          hintText: 'Search...',
+                          border: InputBorder.none),
+                      // onChanged: widget.onChanged,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Area',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: TextField(
+                      controller: area,
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.search,
+                            color: Colors.black26,
+                          ),
+                          hintText: 'Area...',
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'Job Specializations',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black26),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: DropdownButton(
+                      isExpanded: true,
+                      hint: Text(
+                        "Select Job Specializations ...",
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                          fontSize: 16,
+                        ),
+                      ),
+                      underline: SizedBox(),
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                      value: valueChoose,
+                      onChanged: (val) {
+                        setState(() {
+                          valueChoose = val as String;
+                        });
+                      },
+                      items: listItem.map((valueItem) {
+                        return DropdownMenuItem(
+                          value: valueItem,
+                          child: Text(valueItem),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
+              height: 260,
+              color: Colors.grey[200],
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Recommended for You',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 160,
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 6,
+                          separatorBuilder: (context, _) => SizedBox(
+                                width: 10,
+                              ),
+                          itemBuilder: ((context, index) =>
+                              buildJob(item: items[index]))),
+                    )
+                  ]),
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
+              height: 300,
+              color: Colors.white,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'Recommended for You',
+                    'Top Companies',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -501,205 +576,177 @@ class _DashboardState extends State<Dashboard> {
                     height: 160,
                     child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 6,
+                        itemCount: 3,
                         separatorBuilder: (context, _) => SizedBox(
                               width: 10,
                             ),
                         itemBuilder: ((context, index) =>
-                            buildJob(item: items[index]))),
+                            buildCompany(itemCompany: itemsCompany[index]))),
                   )
-                ]),
-          ),
-          Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(15),
-            height: 300,
-            color: Colors.white,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  'Top Companies',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 160,
-                  child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 3,
-                      separatorBuilder: (context, _) => SizedBox(
-                            width: 10,
-                          ),
-                      itemBuilder: ((context, index) =>
-                          buildCompany(itemCompany: itemsCompany[index]))),
-                )
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: 700,
-            color: Color.fromRGBO(50, 75, 205, 1),
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(15),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Benefits',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 280,
-                    width: double.infinity,
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Jobseeker Benefits',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(50, 75, 205, 1),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                '. No travel and exposure to infection risks',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                ". Complete your interview when you're at your best time and peak energy",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '. Find your best job through AI-driven match',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '. Showcase your skills through video recordings as part of your online resume',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '. Identify reputable employers',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ]),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Learn More'),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color.fromRGBO(50, 75, 205, 1))),
-                        ),
-                      ],
+            Container(
+              height: 700,
+              color: Color.fromRGBO(50, 75, 205, 1),
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(15),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Benefits',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    height: 320,
-                    width: double.infinity,
-                    color: Colors.white,
-                    padding: EdgeInsets.all(10),
-                    child: Column(
-                      children: [
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Employer Benefits',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromRGBO(50, 75, 205, 1),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                '. Automate the first-level interview and let AI filter for the best candidates',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                ". Automated emotional screening and personality analysis",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '. Get your management team to do joint follow-up interviews through built-in web conferencing',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '. Combine human and AI ratings to uncover the best candidates',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Text(
-                                '. Integrated background search to verify candidates',
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ]),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Learn More'),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Color.fromRGBO(50, 75, 205, 1))),
-                        )
-                      ],
+                    SizedBox(
+                      height: 10,
                     ),
-                  ),
-                ]),
-          )
-        ],
+                    Container(
+                      height: 280,
+                      width: double.infinity,
+                      color: Colors.white,
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Jobseeker Benefits',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromRGBO(50, 75, 205, 1),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  '. No travel and exposure to infection risks',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  ". Complete your interview when you're at your best time and peak energy",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '. Find your best job through AI-driven match',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '. Showcase your skills through video recordings as part of your online resume',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '. Identify reputable employers',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ]),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Learn More'),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromRGBO(50, 75, 205, 1))),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      height: 320,
+                      width: double.infinity,
+                      color: Colors.white,
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Employer Benefits',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromRGBO(50, 75, 205, 1),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  '. Automate the first-level interview and let AI filter for the best candidates',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  ". Automated emotional screening and personality analysis",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '. Get your management team to do joint follow-up interviews through built-in web conferencing',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '. Combine human and AI ratings to uncover the best candidates',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  '. Integrated background search to verify candidates',
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ]),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text('Learn More'),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromRGBO(50, 75, 205, 1))),
+                          )
+                        ],
+                      ),
+                    ),
+                  ]),
+            )
+          ],
+        ),
       ),
     );
   }

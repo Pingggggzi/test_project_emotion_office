@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/dashboard.dart';
+import 'package:test_project_emotion/screens/jobDashDetailed.dart';
 
 class JobItem {
   final String assetImage;
@@ -285,7 +286,10 @@ class _JobDashState extends State<JobDash> {
             height: 10,
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (ctx) => JobDashDetailed()));
+            },
             child: Text(
               'Apply',
               style: TextStyle(fontSize: 16),
