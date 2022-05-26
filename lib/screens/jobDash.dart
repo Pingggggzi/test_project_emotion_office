@@ -7,18 +7,30 @@ class JobItem {
   final String jobName;
   final String companyName;
   final String website;
-  final String location;
+  final String place;
   final String jobType;
   final String workTime;
+  final String registrationNo;
+  final String location;
+  final String phoneOffice;
+  final String emailOffice;
+  final String companySize;
+  final String others;
 
   const JobItem({
     required this.assetImage,
     required this.jobName,
     required this.companyName,
     required this.website,
-    required this.location,
+    required this.place,
     required this.jobType,
     required this.workTime,
+    required this.registrationNo,
+    required this.location,
+    required this.phoneOffice,
+    required this.emailOffice,
+    required this.companySize,
+    required this.others,
   });
 }
 
@@ -108,54 +120,150 @@ class _JobDashState extends State<JobDash> {
       jobName: 'Training & Development',
       companyName: 'Brandt International Sdn Bhd',
       website: '',
-      location: 'Kuala Lumpur - Kuala Lumpur',
+      place: 'Kuala Lumpur - Kuala Lumpur',
       jobType: 'Training & Development',
       workTime: 'Full-Time',
+      registrationNo: 'BISB123',
+      location: 'Malaysia',
+      phoneOffice: '012333333',
+      emailOffice: 'admin@brandt.com',
+      companySize: '> 5000 Employees',
+      others: '',
     ),
     JobItem(
       assetImage: 'images/workplace2.jpg',
       jobName: 'Computer Hardware Engineer',
       companyName: 'Brandt International Sdn Bhd',
       website: '',
-      location: 'Kuala Lumpur - Kuala Lumpur',
+      place: 'Kuala Lumpur - Kuala Lumpur',
       jobType: ' IT/Computer - Hardware',
       workTime: 'Full-Time',
+      registrationNo: 'BISB123',
+      location: 'Malaysia',
+      phoneOffice: '012333333',
+      emailOffice: 'admin@brandt.com',
+      companySize: '> 5000 Employees',
+      others: '',
     ),
     JobItem(
       assetImage: 'images/workplace3.jpg',
       jobName: 'Computer Hardware Engineer',
       companyName: 'Telecontinent Sdn Bhd',
       website: '',
-      location: 'Kuala Lumpur - Kuala Lumpur',
+      place: 'Kuala Lumpur - Kuala Lumpur',
       jobType: 'IT/Computer - Hardware',
       workTime: 'Full-Time',
+      registrationNo: 'TSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123335858',
+      emailOffice: 'admin@telecontinent.com',
+      companySize: '',
+      others: '',
     ),
     JobItem(
       assetImage: 'images/workplace1.jpg',
       jobName: 'Statistician/Mathematician',
       companyName: 'Sunway Properties Sdn Bhd',
       website: 'www.hiremen.cn',
-      location: 'Kuala Lumpur - Kuala Lumpur',
+      place: 'Kuala Lumpur - Kuala Lumpur',
       jobType: 'Actuarial Science/Statistic',
       workTime: 'Part-Time',
+      registrationNo: 'SPSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123336699',
+      emailOffice: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
     ),
     JobItem(
       assetImage: 'images/workplace1.jpg',
       jobName: 'Actuarial',
       companyName: 'Sunway Properties Sdn Bhd',
       website: 'www.hiremen.cn',
-      location: 'Kuala Lumpur - Kuala Lumpur',
+      place: 'Kuala Lumpur - Kuala Lumpur',
       jobType: 'Actuarial Science/Statistic',
       workTime: 'Full-Time',
+      registrationNo: 'SPSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123336699',
+      emailOffice: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
     ),
     JobItem(
       assetImage: 'images/workplace2.jpg',
       jobName: 'Actuarial',
       companyName: 'Brandt International Sdn Bhd',
       website: '',
-      location: 'Kuala Lumpur - Kuala Lumpur',
+      place: 'Kuala Lumpur - Kuala Lumpur',
       jobType: 'Actuarial Science/Statistic',
       workTime: 'Full-Time',
+      registrationNo: 'BISB123',
+      location: 'Malaysia',
+      phoneOffice: '012333333',
+      emailOffice: 'admin@brandt.com',
+      companySize: '> 5000 Employees',
+      others: '',
+    ),
+    JobItem(
+      assetImage: 'images/workplace1.jpg',
+      jobName: 'Data Scientist',
+      companyName: 'Sunway Properties Sdn Bhd',
+      website: 'www.hiremen.cn',
+      place: 'Kuala Lumpur - Kuala Lumpur',
+      jobType: 'IT/Computer - Software',
+      workTime: 'Part-Time',
+      registrationNo: 'SPSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123336699',
+      emailOffice: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+    ),
+    JobItem(
+      assetImage: 'images/workplace1.jpg',
+      jobName: 'Copywriter',
+      companyName: 'Sunway Properties Sdn Bhd',
+      website: 'www.hiremen.cn',
+      place: 'Kuala Lumpur - Kuala Lumpur',
+      jobType: 'Advertising/Media Planning',
+      workTime: 'Full-Time',
+      registrationNo: 'SPSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123336699',
+      emailOffice: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+    ),
+    JobItem(
+      assetImage: 'images/workplace1.jpg',
+      jobName: 'Training & Development',
+      companyName: 'Sunway Properties Sdn Bhd',
+      website: 'www.hiremen.cn',
+      place: 'Kuala Lumpur - Kuala Lumpur',
+      jobType: 'Training & Development',
+      workTime: 'Full-Time',
+      registrationNo: 'SPSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123336699',
+      emailOffice: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+    ),
+    JobItem(
+      assetImage: 'images/workplace1.jpg',
+      jobName: 'Actuarial',
+      companyName: 'Sunway Properties Sdn Bhd',
+      website: 'www.hiremen.cn',
+      place: 'Kuala Lumpur - Kuala Lumpur',
+      jobType: 'Actuarial Science/Statistic',
+      workTime: 'Full-Time',
+      registrationNo: 'SPSB123',
+      location: 'Malaysia',
+      phoneOffice: '0123336699',
+      emailOffice: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
     ),
   ];
 
@@ -239,7 +347,7 @@ class _JobDashState extends State<JobDash> {
                     width: 5,
                   ),
                   Text(
-                    item.location,
+                    item.place,
                     style: TextStyle(fontSize: 15),
                   )
                 ],
@@ -287,8 +395,8 @@ class _JobDashState extends State<JobDash> {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (ctx) => JobDashDetailed()));
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (ctx) => JobDashDetailed(item: item)));
             },
             child: Text(
               'Apply',
@@ -463,7 +571,7 @@ class _JobDashState extends State<JobDash> {
                     height: 500,
                     width: 350,
                     child: ListView.separated(
-                        itemCount: 6,
+                        itemCount: 10,
                         separatorBuilder: (context, _) => SizedBox(
                               height: 10,
                             ),

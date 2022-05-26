@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/jobDash.dart';
+import 'package:test_project_emotion/screens/login.dart';
 
-class JobDashDetailed extends StatefulWidget {
-  @override
-  State<JobDashDetailed> createState() => _JobDashDetailedState();
-}
+class JobDashDetailed extends StatelessWidget {
+  final JobItem item;
 
-class _JobDashDetailedState extends State<JobDashDetailed> {
+  const JobDashDetailed({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,12 +41,17 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Colors.grey[500],
+                      image: DecorationImage(
+                          image: AssetImage(item.assetImage),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.4), BlendMode.darken)),
                       borderRadius: BorderRadius.circular(5)),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'CompanyName',
+                          item.companyName,
                           style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -56,7 +64,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                               width: 8,
                             ),
                             Text(
-                              'Kualua lumper - Kuala Lumpur',
+                              item.place,
                               style:
                                   TextStyle(fontSize: 16, color: Colors.white),
                             )
@@ -65,7 +73,10 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                         Container(
                           width: 100,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (ctx) => Login()));
+                            },
                             child: Text(
                               'Apply',
                               style: TextStyle(fontSize: 16),
@@ -97,7 +108,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                               width: 5,
                             ),
                             Text(
-                              'Full-Time',
+                              item.workTime,
                               style: TextStyle(fontSize: 15),
                             ),
                           ],
@@ -135,7 +146,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                           width: 5,
                         ),
                         Text(
-                          'Training & Development',
+                          item.jobType,
                           style: TextStyle(fontSize: 15),
                         )
                       ],
@@ -196,7 +207,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                           height: 5,
                         ),
                         Text(
-                          'test',
+                          item.registrationNo,
                           style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(
@@ -211,7 +222,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                           height: 5,
                         ),
                         Text(
-                          'test',
+                          item.location,
                           style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(
@@ -226,7 +237,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                           height: 5,
                         ),
                         Text(
-                          'test',
+                          item.phoneOffice,
                           style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(
@@ -241,7 +252,7 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                           height: 5,
                         ),
                         Text(
-                          'test',
+                          item.emailOffice,
                           style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(
@@ -256,7 +267,22 @@ class _JobDashDetailedState extends State<JobDashDetailed> {
                           height: 5,
                         ),
                         Text(
-                          'test',
+                          item.companySize,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Others :',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          item.others,
                           style: TextStyle(fontSize: 16),
                         ),
                       ]),
