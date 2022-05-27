@@ -1,3 +1,4 @@
+import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:test_project_emotion/screens/companyDash.dart';
@@ -377,24 +378,24 @@ class _DashboardState extends State<Dashboard> {
             Container(
               margin: EdgeInsets.all(10),
               height: 200,
-              child: AspectRatio(
-                  aspectRatio: 4 / 3,
-                  child: Image(
-                    image: AssetImage('images/dashboard1.jpg'),
-                    fit: BoxFit.cover,
-                  )),
-              // child: Carousel(
-              //   dotColor: Colors.white,
-              //   dotBgColor: Colors.black,
-              //   dotIncreasedColor: Color.fromRGBO(50, 75, 205, 1),,
-              //   dotSize: 20,
-              //   dotIncreaseSize: 10,
-              //   autoplay: true,
-              //   images: [
-              //     AssetImage('images/dashboard1.jpg'),
-              //     AssetImage('images/dashboard3.jpg'),
-              //   ],
-              // ),
+              // child: AspectRatio(
+              //     aspectRatio: 4 / 3,
+              //     child: Image(
+              //       image: AssetImage('images/dashboard1.jpg'),
+              //       fit: BoxFit.cover,
+              //     )),
+              child: Carousel(
+                dotColor: Color.fromARGB(255, 52, 58, 64),
+                dotBgColor: Colors.black,
+                dotIncreasedColor: Color.fromRGBO(50, 75, 205, 1),
+                dotSize: 20,
+                dotIncreaseSize: 10,
+                autoplay: true,
+                images: [
+                  Image(image: AssetImage('images/dashboard1.jpg')),
+                  Image(image: AssetImage('images/dashboard3.jpg')),
+                ],
+              ),
             ),
             Container(
               height: 320,

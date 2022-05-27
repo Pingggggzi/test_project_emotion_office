@@ -169,8 +169,10 @@ class _LoginState extends State<Login> {
                   children: <Widget>[
                     Text(
                       "Login",
-                      style:
-                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
                       height: 10,
@@ -314,12 +316,20 @@ class _LoginState extends State<Login> {
       body: Form(
         key: _formKey,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              _buildAllPart(),
-            ],
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/test.jpg'),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.2), BlendMode.darken))),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildAllPart(),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_project_emotion/screens/dashboard.dart';
 import 'package:test_project_emotion/screens/detailedJobAppliedInfo.dart';
 import 'package:test_project_emotion/screens/detailedJobInfo.dart';
 import 'package:test_project_emotion/screens/interview.dart';
@@ -469,7 +470,7 @@ class HomePageState extends State<HomePage> {
             ListTile(
               onTap: () {
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (ctx) => Login()));
+                    MaterialPageRoute(builder: (ctx) => Dashboard()));
               },
               leading: Icon(Icons.exit_to_app),
               title: Text("Logout"),

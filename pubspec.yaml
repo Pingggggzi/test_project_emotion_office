@@ -41,7 +41,7 @@ dependencies:
   fl_chart: ^0.20.1
   flutter_rating_bar: ^4.0.1
   flutter_speed_dial: ^6.0.0
-  # carousel_pro: ^1.0.0
+  carousel_pro_nullsafety: ^1.0.2
 
 dev_dependencies:
   flutter_lints: ^1.0.0
