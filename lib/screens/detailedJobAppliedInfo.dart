@@ -4,35 +4,39 @@ import 'package:test_project_emotion/screens/jobs.dart';
 import 'package:test_project_emotion/widgets/jobApplied.dart';
 
 class DetailedJobAppliedInfo extends StatelessWidget {
-  final String companyName;
-  final String jobName;
-  final String expertise;
-  final String salary;
-  final String jobScope;
-  final String jobRequirement;
-  final String companyOverview;
-  final String registrationNo;
-  final String location;
-  final String phoneNo;
-  final String email;
-  final String companySize;
-  final String others;
-  final String image;
-  DetailedJobAppliedInfo(
-      {required this.companyName,
-      required this.jobName,
-      required this.expertise,
-      required this.salary,
-      required this.jobScope,
-      required this.jobRequirement,
-      required this.companyOverview,
-      required this.registrationNo,
-      required this.location,
-      required this.phoneNo,
-      required this.email,
-      required this.companySize,
-      required this.others,
-      required this.image});
+  final JobAppliedItem item;
+  // final String companyName;
+  // final String jobName;
+  // final String expertise;
+  // final String salary;
+  // final String jobScope;
+  // final String jobRequirement;
+  // final String companyOverview;
+  // final String registrationNo;
+  // final String location;
+  // final String phoneNo;
+  // final String email;
+  // final String companySize;
+  // final String others;
+  // final String image;
+  const DetailedJobAppliedInfo({
+    Key? key,
+    required this.item,
+    //   required this.companyName,
+    // required this.jobName,
+    // required this.expertise,
+    // required this.salary,
+    // required this.jobScope,
+    // required this.jobRequirement,
+    // required this.companyOverview,
+    // required this.registrationNo,
+    // required this.location,
+    // required this.phoneNo,
+    // required this.email,
+    // required this.companySize,
+    // required this.others,
+    // required this.image
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +65,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                         border:
                             Border(bottom: BorderSide(color: Colors.black12))),
                     child: Image(
-                      image: AssetImage(image),
+                      image: AssetImage(item.image),
                     ),
                   ),
                   SizedBox(
@@ -80,7 +84,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              jobName,
+                              item.jobName,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
@@ -95,7 +99,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          companyName,
+                          item.companyName,
                           style: TextStyle(fontSize: 15),
                         )
                       ],
@@ -131,7 +135,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            expertise,
+                            item.expertise,
                             style: TextStyle(fontSize: 15),
                             textAlign: TextAlign.center,
                           ),
@@ -147,7 +151,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            salary,
+                            item.salary,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -162,7 +166,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            jobScope,
+                            item.jobScope,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -177,7 +181,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            jobRequirement,
+                            item.jobRequirement,
                             style: TextStyle(fontSize: 15),
                           ),
                         ],
@@ -199,7 +203,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 10,
                           ),
                           Text(
-                            companyOverview,
+                            item.companyOverview,
                             style: TextStyle(fontSize: 15),
                             textAlign: TextAlign.center,
                           )
@@ -230,7 +234,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            registrationNo,
+                            item.registrationNo,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -245,7 +249,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            location,
+                            item.location,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -260,7 +264,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            phoneNo,
+                            item.phoneNo,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -275,7 +279,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            email,
+                            item.email,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -290,7 +294,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            companySize,
+                            item.companySize,
                             style: TextStyle(fontSize: 15),
                           ),
                           SizedBox(
@@ -305,7 +309,7 @@ class DetailedJobAppliedInfo extends StatelessWidget {
                             height: 5,
                           ),
                           Text(
-                            others,
+                            item.others,
                             style: TextStyle(fontSize: 15),
                           ),
                         ],

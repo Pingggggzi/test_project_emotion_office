@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:chewie/chewie.dart';
+import 'package:cnic_scanner/model/cnic_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:test_project_emotion/screens/employerSetting.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 import 'package:video_player/video_player.dart';
+import 'package:cnic_scanner/cnic_scanner.dart';
 
 class CompanyVerification extends StatefulWidget {
   @override
@@ -16,6 +18,22 @@ class _CompanyVerificationState extends State<CompanyVerification> {
   int currentStep = 0;
   final TextEditingController companyName = TextEditingController();
   final TextEditingController companyAddress = TextEditingController();
+
+  CnicModel _cnicModel = CnicModel();
+  Future<void> scanCnic(ImageSource imageSource) async {
+    /// you will need to pass one argument of "ImageSource" as shown here
+    CnicModel cnicModel =
+        await CnicScanner().scanImage(imageSource: imageSource);
+    if (cnicModel == null) return;
+    setState(() {
+      _cnicModel = cnicModel;
+      // nameTEController.text = _cnicModel.cnicHolderName;
+      // cnicTEController.text = _cnicModel.cnicNumber;
+      // dobTEController.text = _cnicModel.cnicHolderDateOfBirth;
+      // doiTEController.text = _cnicModel.cnicIssueDate;
+      // doeTEController.text = _cnicModel.cnicExpiryDate;
+    });
+  }
 
   File? imageFrontID;
   File? imageBackID;

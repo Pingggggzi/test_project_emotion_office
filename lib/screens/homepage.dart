@@ -11,6 +11,39 @@ import 'package:test_project_emotion/screens/setting.dart';
 import 'package:test_project_emotion/widgets/jobApplied.dart';
 import 'package:test_project_emotion/widgets/recording.dart';
 
+class JobAppliedItem {
+  final String companyName;
+  final String jobName;
+  final String salary;
+  final String expertise;
+  final String jobScope;
+  final String jobRequirement;
+  final String companyOverview;
+  final String registrationNo;
+  final String location;
+  final String phoneNo;
+  final String email;
+  final String companySize;
+  final String others;
+  final String image;
+
+  const JobAppliedItem(
+      {required this.companyName,
+      required this.jobName,
+      required this.salary,
+      required this.expertise,
+      required this.jobScope,
+      required this.jobRequirement,
+      required this.companyOverview,
+      required this.registrationNo,
+      required this.location,
+      required this.phoneNo,
+      required this.email,
+      required this.companySize,
+      required this.others,
+      required this.image});
+}
+
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
@@ -33,7 +66,178 @@ class HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  buildJobApplied() {
+  List<JobAppliedItem> items = [
+    JobAppliedItem(
+      companyName: 'Brandt International Sdn Bhd',
+      jobName: 'Training & Development',
+      salary: 'RM 3600',
+      expertise: 'Training & Development',
+      jobScope: 'test',
+      jobRequirement: 'test',
+      companyOverview: '',
+      registrationNo: 'BISB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '012333333',
+      email: 'admin@brandt.com',
+      companySize: '> 5000 Employees',
+      others: '',
+      image: 'images/workplace2.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Brandt International Sdn Bhd',
+      jobName: 'Computer Hardware Engineer',
+      salary: 'RM 3000',
+      expertise: 'IT/Computer - Hardware',
+      jobScope: 'test',
+      jobRequirement: 'test',
+      companyOverview: '',
+      registrationNo: 'BISB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '012333333',
+      email: 'admin@brandt.com',
+      companySize: '> 5000 Employees',
+      others: '',
+      image: 'images/workplace2.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Telecontinent Sdn Bhd',
+      jobName: 'Computer Hardware Engineer',
+      salary: 'RM 3500',
+      expertise: 'IT/Computer - Hardware',
+      jobScope: 'test',
+      jobRequirement: 'test',
+      companyOverview: '',
+      registrationNo: 'TSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123335858',
+      email: 'admin@telecontinent.com',
+      companySize: '',
+      others: '',
+      image: 'images/workplace3.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Sunway Properties Sdn Bhd',
+      jobName: 'Statistician/Mathematician',
+      salary: 'RM 2800',
+      expertise: 'Actuarial\nScience/Statistic',
+      jobScope: 'tester',
+      jobRequirement: 'tester',
+      companyOverview:
+          'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+      registrationNo: 'SPSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123336699',
+      email: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+      image: 'images/workplace1.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Sunway Properties Sdn Bhd',
+      jobName: 'Actuarial',
+      salary: 'RM 2000',
+      expertise: 'Actuarial\nScience/Statistic',
+      jobScope: 'Job Scope',
+      jobRequirement: 'Requirement',
+      companyOverview:
+          'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+      registrationNo: 'SPSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123336699',
+      email: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+      image: 'images/workplace1.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Brandt International Sdn Bhd',
+      jobName: 'Actuarial',
+      salary: 'RM 5000',
+      expertise: 'Actuarial\nScience/Statistic',
+      jobScope: 'Job Scope',
+      jobRequirement: 'Requirement',
+      companyOverview: '',
+      registrationNo: 'BISB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '012333333',
+      email: 'admin@brandt.com',
+      companySize: '> 5000 Employees',
+      others: '',
+      image: 'images/workplace2.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Sunway Properties Sdn Bhd',
+      jobName: 'Data Scientist',
+      salary: '¥ 2000',
+      expertise: 'IT/Computer - Software',
+      jobScope:
+          "1. Has performing to people, making people happy and giving people good memories / experience always been something that you are passionate about?\n2. Are you having difficulty in finding the right platform / stage for you to showcase your passion?\n3. Is horror movies your always go to genre?\nIf you say yes to all these, READ on!\nHauntu Malaysia is looking for part time actors/actresses\nYou need engage in immersive acting. Well, as mentioned, we are the most unique horror-themed immersive theatre in Malaysia. But don't worry if you don't already have experience in immersive acting, as training will be provided.\nYou need reset the theatre grounds for the next group of customers. Once again, don't worry as training will be provided.\nYou will need to deliver a fun and exciting experience for the customers while ensuring that the sessions are operated safely as per the standard operating procedure.\nYour are also required to maintain a clean, safe and orderly work environment. Anyways, no one likes adirty, messy and hazardous work place right?\nYou are also required to perform other duties as assigned and be punctual to work. And no one likes someone who shows up late for meetings either right?",
+      jobRequirement:
+          '1. Have performing experience\n2. Minimum 6 months commitment\n3. Speaks good English\n4. Someone who is fun, friendly, excellent team player and possesses a positive attitude\n5. Someone who is eager to learn\n6. Customer oriented\n7. Able to effectively communicate in one-on-one and with groups\n8. Able to work independently with minimal supervison\n9. Able to react fast to unforeseen circumstances\n10. Flexible in working hour/day',
+      companyOverview:
+          'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+      registrationNo: 'SPSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123336699',
+      email: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+      image: 'images/workplace1.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Sunway Properties Sdn Bhd',
+      jobName: 'Copywriter',
+      salary: 'RM 3000',
+      expertise: 'Advertising/Media\nPlanning',
+      jobScope: 'Job Scope',
+      jobRequirement: 'Requirement',
+      companyOverview:
+          'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+      registrationNo: 'SPSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123336699',
+      email: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+      image: 'images/workplace1.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Sunway Properties Sdn Bhd',
+      jobName: 'Training & Development',
+      salary: 'RM 2000',
+      expertise: 'Training & Development',
+      jobScope: 'Job Scope',
+      jobRequirement: 'Requirement',
+      companyOverview:
+          'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+      registrationNo: 'SPSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123336699',
+      email: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+      image: 'images/workplace1.jpg',
+    ),
+    JobAppliedItem(
+      companyName: 'Sunway Properties Sdn Bhd',
+      jobName: 'Actuarial',
+      salary: 'RM 2000',
+      expertise: 'Actuarial\nScience/Statistic',
+      jobScope: 'Job Scope',
+      jobRequirement: 'Requirement\nasdasd',
+      companyOverview:
+          'We are a small team of young padawans who are passionate at what we do. We specialize in digital marketing, SEO, Google Ads, web design and copywriting. We welcome young talents who share the same passion with us. At Sterrific, we will guide you hand by hand in every step you go.',
+      registrationNo: 'SPSB123',
+      location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+      phoneNo: '0123336699',
+      email: 'admin@sunway.com',
+      companySize: '1-50 Employees',
+      others: 'Regular Hour, Monday - Friday, Casual',
+      image: 'images/workplace1.jpg',
+    ),
+  ];
+
+  buildJobApplied({required JobAppliedItem item}) {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(8),
@@ -49,21 +253,21 @@ class HomePageState extends State<HomePage> {
           Column(
             children: [
               Text(
-                "Brandt International Sdn Bhd",
+                item.companyName,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 15,
               ),
               Text(
-                "Training & Development",
+                item.jobName,
                 style: TextStyle(fontSize: 15),
               ),
               SizedBox(
                 height: 10,
               ),
               Text(
-                "RM 3600",
+                item.salary,
                 style: TextStyle(fontSize: 13),
               ),
             ],
@@ -72,20 +276,21 @@ class HomePageState extends State<HomePage> {
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (ctx) => DetailedJobAppliedInfo(
-                          companyName: 'Brandt International Sdn Bhd',
-                          jobName: 'Training & Development',
-                          expertise: 'Training & Development',
-                          salary: 'RM 3600',
-                          jobScope: 'test',
-                          jobRequirement: 'test',
-                          companyOverview: '',
-                          registrationNo: 'BISB123',
-                          location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
-                          phoneNo: '012333333',
-                          email: 'admin@brandt.com',
-                          companySize: '> 5000 Employees',
-                          others: '',
-                          image: 'images/workplace2.jpg',
+                          item: item,
+                          // companyName: 'Brandt International Sdn Bhd',
+                          // jobName: 'Training & Development',
+                          // expertise: 'Training & Development',
+                          // salary: 'RM 3600',
+                          // jobScope: 'test',
+                          // jobRequirement: 'test',
+                          // companyOverview: '',
+                          // registrationNo: 'BISB123',
+                          // location: 'Kuala Lumpur / Kuala Lumpur - Malaysia',
+                          // phoneNo: '012333333',
+                          // email: 'admin@brandt.com',
+                          // companySize: '> 5000 Employees',
+                          // others: '',
+                          // image: 'images/workplace2.jpg',
                         )));
               },
               icon: Icon(Icons.arrow_right))
@@ -267,7 +472,7 @@ class HomePageState extends State<HomePage> {
                                 primary: false,
                                 itemCount: 10,
                                 itemBuilder: (context, index) =>
-                                    buildJobApplied(),
+                                    buildJobApplied(item: items[index]),
                               )),
                             ],
                           ),
@@ -433,7 +638,7 @@ class HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (ctx) => Jobprogress()));
               },
               leading: Icon(Icons.pending_actions),
-              title: Text("Job Progress/ interview tem"),
+              title: Text("Job Progress"),
             ),
             ListTile(
               selected: jobsColor,
