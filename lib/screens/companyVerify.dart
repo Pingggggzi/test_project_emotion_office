@@ -19,45 +19,44 @@ class _CompanyVerificationState extends State<CompanyVerification> {
   final TextEditingController companyName = TextEditingController();
   final TextEditingController companyAddress = TextEditingController();
 
-  CnicModel _cnicModel = CnicModel();
-  Future<void> scanCnic(ImageSource imageSource) async {
-    /// you will need to pass one argument of "ImageSource" as shown here
-    CnicModel cnicModel =
-        await CnicScanner().scanImage(imageSource: imageSource);
-    if (cnicModel == null) return;
-    setState(() {
-      _cnicModel = cnicModel;
-      // nameTEController.text = _cnicModel.cnicHolderName;
-      // cnicTEController.text = _cnicModel.cnicNumber;
-      // dobTEController.text = _cnicModel.cnicHolderDateOfBirth;
-      // doiTEController.text = _cnicModel.cnicIssueDate;
-      // doeTEController.text = _cnicModel.cnicExpiryDate;
-    });
-  }
+  // CnicModel _cnicModel = CnicModel();
+  // Future<void> scanCnic(ImageSource imageSource) async {
+  //   /// you will need to pass one argument of "ImageSource" as shown here
+  //   CnicModel cnicModel =
+  //       await CnicScanner().scanImage(imageSource: imageSource);
+  //   if (cnicModel == null) return;
+  //   setState(() {
+  //     _cnicModel = cnicModel;
+  //   });
+  // }
 
   File? imageFrontID;
   File? imageBackID;
   File? imageSelfie;
+  CnicModel _pickFrontID = CnicModel();
+  CnicModel _pickBackID = CnicModel();
   Future pickFrontID(ImageSource source) async {
-    final imageFrontID = await ImagePicker().pickImage(source: source);
+    // final imageFrontID = await ImagePicker().pickImage(source: source);
+    CnicModel imageFrontID = await CnicScanner().scanImage(imageSource: source);
 
     if (imageFrontID == null) return;
 
-    final imageFrontIDTemporary = File(imageFrontID.path);
+    // final imageFrontIDTemporary = File(imageFrontID.path);
 
     setState(() {
-      this.imageFrontID = imageFrontIDTemporary;
+      _pickFrontID = imageFrontID;
     });
   }
 
   Future pickBackID(ImageSource source) async {
-    final imageBackID = await ImagePicker().pickImage(source: source);
-
+    // final imageBackID = await ImagePicker().pickImage(source: source);
+    CnicModel imageBackID = await CnicScanner().scanImage(imageSource: source);
     if (imageBackID == null) return;
 
-    final imageBackIDTemporary = File(imageBackID.path);
+    // final imageBackIDTemporary = File(imageBackID.path);
     setState(() {
-      this.imageBackID = imageBackIDTemporary;
+      // this.imageBackID = imageBackIDTemporary;
+      _pickBackID = imageBackID;
     });
   }
 
@@ -106,16 +105,22 @@ class _CompanyVerificationState extends State<CompanyVerification> {
             children: [
               FlatButton.icon(
                 onPressed: () {
+                  // onGalleryBTNPressed:
+                  // () {
+                  //   scanCnic(ImageSource.gallery);
+                  // };
                   pickFrontID(ImageSource.gallery);
-                  // pickBackID(ImageSource.gallery);
                 },
                 icon: Icon(Icons.image),
                 label: Text('Gallery'),
               ),
               FlatButton.icon(
                 onPressed: () {
+                  // OnCameraBTNPressed:
+                  // () {
+                  //   scanCnic(ImageSource.camera);
+                  // };
                   pickFrontID(ImageSource.camera);
-                  // pickBackID(ImageSource.camera);
                 },
                 icon: Icon(Icons.camera_alt),
                 label: Text('Camera'),
