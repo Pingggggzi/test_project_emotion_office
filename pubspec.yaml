@@ -43,6 +43,9 @@ dependencies:
   flutter_speed_dial: ^6.0.0
   carousel_pro_nullsafety: ^1.0.2
   cnic_scanner: ^0.0.2
+  get: ^4.6.5
+  camera: ^0.9.7+1
+  firebase_ml_vision: ^0.12.0+3
 
 dev_dependencies:
   flutter_lints: ^1.0.0

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "685793162893",
+    "project_id": "hiremen-c02e2",
+    "storage_bucket": "hiremen-c02e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685793162893:android:2e5a6cd6598ab53c4214c4",
+        "android_client_info": {
+          "package_name": "com.example.test_project_emotion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685793162893-j9lbl9modf415o56l07ul44phcsve1fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCljbPDR2e9BGRlsTCbgA1yEUo0w_ImBjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685793162893-j9lbl9modf415o56l07ul44phcsve1fu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
