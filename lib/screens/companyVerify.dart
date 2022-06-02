@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:camera/camera.dart';
 import 'package:chewie/chewie.dart';
 import 'package:cnic_scanner/model/cnic_model.dart';
 import 'package:flutter/material.dart';
+import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:test_project_emotion/screens/employerSetting.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
@@ -18,6 +20,26 @@ class _CompanyVerificationState extends State<CompanyVerification> {
   int currentStep = 0;
   final TextEditingController companyName = TextEditingController();
   final TextEditingController companyAddress = TextEditingController();
+
+  FaceDetector faceDetector =
+      GoogleMlKit.vision.faceDetector(FaceDetectorOptions(
+    enableContours: true,
+    enableClassification: true,
+  ));
+  bool isBusy = false;
+  late CustomPaint customPaint;
+  late final Function(InputImage inputImage) onImage;
+  late final CameraLensDirection initialDirection;
+  void dispose() {
+    faceDetector.close();
+    super.dispose();
+  }
+
+  // late CameraController _controller;
+  // int _cameraIndex = 1;
+  // void initState() {
+  //   super.initState();
+  // }
 
   // CnicModel _cnicModel = CnicModel();
   // Future<void> scanCnic(ImageSource imageSource) async {
