@@ -1,8 +1,9 @@
 import 'dart:io';
-
+import 'package:permission_handler/permission_handler.dart';
 import 'package:camera/camera.dart';
 import 'package:chewie/chewie.dart';
 import 'package:cnic_scanner/model/cnic_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,10 +12,23 @@ import 'package:test_project_emotion/widgets/mytextformField.dart';
 import 'package:video_player/video_player.dart';
 import 'package:cnic_scanner/cnic_scanner.dart';
 
+var cameras;
+
 class CompanyVerification extends StatefulWidget {
+  const CompanyVerification(
+      {Key? key,
+      required this.customPaint,
+      required this.onImage,
+      required this.initialDirection})
+      : super(key: key);
+  final CustomPaint customPaint;
+  final Function(InputImage inputImage) onImage;
+  final CameraLensDirection initialDirection;
   @override
   State<CompanyVerification> createState() => _CompanyVerificationState();
 }
+
+enum ScreenMode { liveFeed, gallery }
 
 class _CompanyVerificationState extends State<CompanyVerification> {
   int currentStep = 0;
@@ -27,19 +41,144 @@ class _CompanyVerificationState extends State<CompanyVerification> {
     enableClassification: true,
   ));
   bool isBusy = false;
-  late CustomPaint customPaint;
-  late final Function(InputImage inputImage) onImage;
-  late final CameraLensDirection initialDirection;
+
   void dispose() {
     faceDetector.close();
+    _stopLiveFeed();
     super.dispose();
   }
 
-  // late CameraController _controller;
-  // int _cameraIndex = 1;
-  // void initState() {
-  //   super.initState();
-  // }
+  Future<void> processImage(InputImage inputImage) async {
+    if (isBusy) return;
+    isBusy = true;
+    final faces = await faceDetector.processImage(inputImage);
+    if (faces.length > 0 && faces[0].smilingProbability != null) {
+      final double? smileProb = faces[0].smilingProbability;
+      print(smileProb);
+      isBusy = false;
+      if (mounted) {
+        setState(() {});
+      }
+    }
+  }
+
+  late CameraController? _controller;
+  int _cameraIndex = 0;
+  void initState() {
+    super.initState();
+
+    for (var i = 0; i < cameras.length; i++) {
+      if (cameras[i].lensDirection == widget.initialDirection) {
+        _cameraIndex = i;
+      }
+    }
+    _startLiveFeed();
+  }
+
+  Future _startLiveFeed() async {
+    final _cameras = cameras[_cameraIndex];
+    _controller =
+        CameraController(cameras, ResolutionPreset.low, enableAudio: false);
+    _controller?.initialize().then((_) {
+      if (!mounted) {
+        return;
+      }
+      _controller?.startImageStream(_processCameraImage);
+      setState(() {});
+    });
+  }
+
+  Future _processCameraImage(CameraImage image) async {
+    final WriteBuffer allBytes = WriteBuffer();
+    for (Plane plane in image.planes) {
+      allBytes.putUint8List(plane.bytes);
+    }
+    final bytes = allBytes.done().buffer.asUint8List();
+
+    final Size imageSize =
+        Size(image.width.toDouble(), image.height.toDouble());
+
+    final _cameras = cameras[_cameraIndex];
+    final imageRotation =
+        InputImageRotationMethods.fromRawValue(cameras.sensorOrientation) ??
+            InputImageRotation.Rotation_0deg;
+
+    final inputImageFormat =
+        InputImageFormatMethods.fromRawValue(image.format.raw) ??
+            InputImageFormat.NV21;
+
+    final planeData = image.planes.map(
+      (Plane plane) {
+        return InputImagePlaneMetadata(
+          bytesPerRow: plane.bytesPerRow,
+          height: plane.height,
+          width: plane.width,
+        );
+      },
+    ).toList();
+    final inputImageData = InputImageData(
+        size: imageSize,
+        imageRotation: imageRotation,
+        inputImageFormat: inputImageFormat,
+        planeData: planeData);
+
+    final inputImage =
+        InputImage.fromBytes(bytes: bytes, inputImageData: inputImageData);
+    widget.onImage(inputImage);
+  }
+
+  Future _stopLiveFeed() async {
+    await _controller?.stopImageStream();
+    await _controller?.dispose();
+    _controller = null;
+  }
+
+  Widget _liveFeedBody() {
+    if (_controller?.value.isInitialized == false) {
+      return Container(
+        height: 200,
+        width: double.infinity,
+        decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
+        child: Icon(
+          Icons.videocam,
+          size: 30,
+          color: Color.fromARGB(255, 23, 162, 184),
+        ),
+      );
+    }
+    return Container(
+      height: 200,
+      width: double.infinity,
+      decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          CameraPreview(_controller!),
+          if (widget.customPaint != null) widget.customPaint,
+        ],
+      ),
+      // child: _videoFile == null
+      //     ? Icon(
+      //         Icons.videocam,
+      //         size: 30,
+      //         color: Color.fromARGB(255, 23, 162, 184),
+      //       )
+      //     : FittedBox(
+      //         fit: BoxFit.contain,
+      //         child: mounted
+      //             ? Chewie(
+      //                 controller: ChewieController(
+      //                   videoPlayerController:
+      //                       VideoPlayerController.file(File(_videoFile!.path)),
+      //                   aspectRatio: 3 / 2,
+      //                   autoPlay: true,
+      //                   looping: true,
+      //                 ),
+      //               )
+      //             : Container(),
+      //       ),
+    );
+  }
 
   // CnicModel _cnicModel = CnicModel();
   // Future<void> scanCnic(ImageSource imageSource) async {
@@ -344,27 +483,28 @@ class _CompanyVerificationState extends State<CompanyVerification> {
                             width: double.infinity,
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black12)),
-                            child: _videoFile == null
-                                ? Icon(
-                                    Icons.videocam,
-                                    size: 30,
-                                    color: Color.fromARGB(255, 23, 162, 184),
-                                  )
-                                : FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: mounted
-                                        ? Chewie(
-                                            controller: ChewieController(
-                                              videoPlayerController:
-                                                  VideoPlayerController.file(
-                                                      File(_videoFile!.path)),
-                                              aspectRatio: 3 / 2,
-                                              autoPlay: true,
-                                              looping: true,
-                                            ),
-                                          )
-                                        : Container(),
-                                  ),
+                            child: _liveFeedBody(),
+                            // child: _videoFile == null
+                            //     ? Icon(
+                            //         Icons.videocam,
+                            //         size: 30,
+                            //         color: Color.fromARGB(255, 23, 162, 184),
+                            //       )
+                            //     : FittedBox(
+                            //         fit: BoxFit.contain,
+                            //         child: mounted
+                            //             ? Chewie(
+                            //                 controller: ChewieController(
+                            //                   videoPlayerController:
+                            //                       VideoPlayerController.file(
+                            //                           File(_videoFile!.path)),
+                            //                   aspectRatio: 3 / 2,
+                            //                   autoPlay: true,
+                            //                   looping: true,
+                            //                 ),
+                            //               )
+                            //             : Container(),
+                            //       ),
                           ),
                           SizedBox(
                             height: 5,
