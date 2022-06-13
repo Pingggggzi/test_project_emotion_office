@@ -43,7 +43,7 @@ dependencies:
   flutter_speed_dial: ^6.0.0
   carousel_pro_nullsafety: ^1.0.2
   cnic_scanner: ^0.0.2
-  
+  tflite: ^1.1.2
   camera: ^0.9.7+1
   google_ml_kit: ^0.7.0
   permission_handler: ^8.1.4+2
