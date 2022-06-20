@@ -1,22 +1,18 @@
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:test_project_emotion/screens/dashboard.dart';
-import 'package:test_project_emotion/screens/employerLogin.dart';
 import 'package:test_project_emotion/screens/employerSignUp.dart';
+import 'package:test_project_emotion/screens/homepage.dart';
+import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/screens/signup.dart';
 import 'package:test_project_emotion/widgets/changescreen.dart';
+import 'package:test_project_emotion/widgets/mybutton.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 import 'package:test_project_emotion/widgets/passwordtextformField.dart';
-import '../widgets/mybutton.dart';
-import 'homepage.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert' show json;
 
-class Login extends StatefulWidget {
+class EmployerLogin extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  State<EmployerLogin> createState() => _EmployerLoginState();
 }
 
 GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -32,46 +28,42 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 bool obserText = true;
 
-class _LoginState extends State<Login> {
-  Future login() async {
-    var url = Uri.parse('http://10.113.64.27/login.php');
-    var response = await http.post(url, body: {
-      "username": email.text,
-      "password": password.text,
-    });
-    var data = json.decode(response.body);
-    if (data == "Success") {
-      Fluttertoast.showToast(
-          msg: "Login Successfully!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.green,
-          textColor: Colors.white,
-          fontSize: 16.0);
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (ctx) => HomePage()));
-    } else {
-      Fluttertoast.showToast(
-          msg: "Login info incorrect!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
+class _EmployerLoginState extends State<EmployerLogin> {
+  // Future loginEmployer() async {
+  //   var url = Uri.parse('http://10.113.64.27/loginEmployer.php');
+  //   var response = await http.post(url, body: {
+  //     "usernameEmployer": email.text,
+  //     "passwordEmployer": password.text,
+  //   });
+  //   var data = json.decode(response.body);
+  //   if (data == "Success") {
+  //     Fluttertoast.showToast(
+  //         msg: "Login Successfully!",
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.CENTER,
+  //         timeInSecForIosWeb: 1,
+  //         backgroundColor: Colors.green,
+  //         textColor: Colors.white,
+  //         fontSize: 16.0);
+  //     Navigator.of(context)
+  //         .pushReplacement(MaterialPageRoute(builder: (ctx) => HomePage()));
+  //   } else {
+  //     Fluttertoast.showToast(
+  //         msg: "Login info incorrect!",
+  //         toastLength: Toast.LENGTH_SHORT,
+  //         gravity: ToastGravity.CENTER,
+  //         timeInSecForIosWeb: 1,
+  //         backgroundColor: Colors.red,
+  //         textColor: Colors.white,
+  //         fontSize: 16.0);
+  //   }
+  // }
 
   void submit(context) async {
     try {
       setState(() {
         isLoading = true;
       });
-      // UserCredential result = await FirebaseAuth.instance
-      // .signInWithEmailAndPassword(
-      //     email: email.text, password: password.text);
-      // print(result);
     } on PlatformException catch (error) {
       var message = "Please Check Your Internet Connection ";
       if (error.message != null) {
@@ -200,15 +192,23 @@ class _LoginState extends State<Login> {
                       height: 10,
                     ),
                     isLoading == false
-                        ? MyButton(
-                            onPressed: () {
-                              vaildation();
-                              // login();
-                              Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                      builder: (ctx) => HomePage()));
-                            },
-                            name: "Login",
+                        ? Container(
+                            height: 45,
+                            width: double.infinity,
+                            child: RaisedButton(
+                              child: Text(
+                                'Login',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              color: Color.fromARGB(255, 23, 162, 184),
+                              onPressed: () {
+                                vaildation();
+                                // login();
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (ctx) => HomePage()));
+                              },
+                            ),
                           )
                         : Center(
                             child: CircularProgressIndicator(),
@@ -286,19 +286,14 @@ class _LoginState extends State<Login> {
                                               style: ButtonStyle(
                                                   backgroundColor:
                                                       MaterialStateProperty.all(
-                                                          Color.fromRGBO(
-                                                              50, 75, 205, 1))),
+                                                          Color.fromARGB(255,
+                                                              23, 162, 184))),
                                             ),
                                           ],
                                         )
                                       ],
                                     ),
                                   ));
-                          // Navigator.of(context).pushReplacement(
-                          //   MaterialPageRoute(
-                          //     builder: (ctx) => SignUp(),
-                          //   ),
-                          // );
                         }),
                   ],
                 ),
@@ -311,12 +306,12 @@ class _LoginState extends State<Login> {
                         onPressed: () {
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
-                              builder: (ctx) => EmployerLogin(),
+                              builder: (ctx) => Login(),
                             ),
                           );
                         },
                         child: Text(
-                          'I Am Employer',
+                          'I Am Candidate',
                           style: TextStyle(fontSize: 18),
                         ))
                   ],
@@ -336,12 +331,12 @@ class _LoginState extends State<Login> {
       body: Form(
         key: _formKey,
         child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/test.jpg'),
-                  fit: BoxFit.cover,
-                  colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.2), BlendMode.darken))),
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: AssetImage('images/test.jpg'),
+          //         fit: BoxFit.cover,
+          //         colorFilter: ColorFilter.mode(
+          //             Colors.white.withOpacity(0.2), BlendMode.darken))),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Column(
