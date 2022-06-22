@@ -161,11 +161,11 @@ class _EmployerSignUpState extends State<EmployerSignUp> {
   List listStateOffice = [];
   List listCityOffice = [];
 
-  Future register() async {
-    var url = Uri.parse('http://10.113.64.27/register.php');
+  Future registerEmployer() async {
+    var url = Uri.parse('http://10.113.64.27/registerEmployer.php');
     var response = await http.post(url, body: {
-      "username": email.text,
-      "password": password.text,
+      "usernameEmployer": email.text,
+      "passwordEmployer": password.text,
     });
 
     var data = json.decode(response.body);
@@ -787,7 +787,7 @@ class _EmployerSignUpState extends State<EmployerSignUp> {
               ? MyButton(
                   name: "SignUp",
                   onPressed: () {
-                    register();
+                    registerEmployer();
                     vaildation();
                   },
                 )

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:test_project_emotion/screens/advertise.dart';
 import 'package:test_project_emotion/screens/candidate.dart';
 import 'package:test_project_emotion/screens/companyProfile.dart';
+import 'package:test_project_emotion/screens/employerLogin.dart';
 import 'package:test_project_emotion/screens/employerSetting.dart';
-import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/screens/questionPage.dart';
 import 'package:test_project_emotion/widgets/barChart.dart';
 
@@ -156,7 +156,7 @@ class _EmployerHomepageState extends State<EmployerHomepage> {
             ListTile(
               onTap: () {
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (ctx) => Login()));
+                    MaterialPageRoute(builder: (ctx) => EmployerLogin()));
               },
               leading: Icon(Icons.exit_to_app),
               title: Text("Logout"),

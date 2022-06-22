@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_project_emotion/screens/dashboard.dart';
+import 'package:test_project_emotion/screens/employerHomepage.dart';
 import 'package:test_project_emotion/screens/employerSignUp.dart';
-import 'package:test_project_emotion/screens/homepage.dart';
 import 'package:test_project_emotion/screens/login.dart';
 import 'package:test_project_emotion/screens/signup.dart';
 import 'package:test_project_emotion/widgets/changescreen.dart';
 import 'package:test_project_emotion/widgets/mybutton.dart';
 import 'package:test_project_emotion/widgets/mytextformField.dart';
 import 'package:test_project_emotion/widgets/passwordtextformField.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' show json;
 
 class EmployerLogin extends StatefulWidget {
   @override
@@ -29,35 +32,35 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 bool obserText = true;
 
 class _EmployerLoginState extends State<EmployerLogin> {
-  // Future loginEmployer() async {
-  //   var url = Uri.parse('http://10.113.64.27/loginEmployer.php');
-  //   var response = await http.post(url, body: {
-  //     "usernameEmployer": email.text,
-  //     "passwordEmployer": password.text,
-  //   });
-  //   var data = json.decode(response.body);
-  //   if (data == "Success") {
-  //     Fluttertoast.showToast(
-  //         msg: "Login Successfully!",
-  //         toastLength: Toast.LENGTH_SHORT,
-  //         gravity: ToastGravity.CENTER,
-  //         timeInSecForIosWeb: 1,
-  //         backgroundColor: Colors.green,
-  //         textColor: Colors.white,
-  //         fontSize: 16.0);
-  //     Navigator.of(context)
-  //         .pushReplacement(MaterialPageRoute(builder: (ctx) => HomePage()));
-  //   } else {
-  //     Fluttertoast.showToast(
-  //         msg: "Login info incorrect!",
-  //         toastLength: Toast.LENGTH_SHORT,
-  //         gravity: ToastGravity.CENTER,
-  //         timeInSecForIosWeb: 1,
-  //         backgroundColor: Colors.red,
-  //         textColor: Colors.white,
-  //         fontSize: 16.0);
-  //   }
-  // }
+  Future loginEmployer() async {
+    var url = Uri.parse('http://10.113.64.27/loginEmployer.php');
+    var response = await http.post(url, body: {
+      "usernameEmployer": email.text,
+      "passwordEmployer": password.text,
+    });
+    var data = json.decode(response.body);
+    if (data == "Success") {
+      Fluttertoast.showToast(
+          msg: "Login Successfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (ctx) => EmployerHomepage()));
+    } else {
+      Fluttertoast.showToast(
+          msg: "Login info incorrect!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
 
   void submit(context) async {
     try {
@@ -203,10 +206,10 @@ class _EmployerLoginState extends State<EmployerLogin> {
                               color: Color.fromARGB(255, 23, 162, 184),
                               onPressed: () {
                                 vaildation();
-                                // login();
+                                // loginEmployer();
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (ctx) => HomePage()));
+                                        builder: (ctx) => EmployerHomepage()));
                               },
                             ),
                           )
@@ -331,12 +334,12 @@ class _EmployerLoginState extends State<EmployerLogin> {
       body: Form(
         key: _formKey,
         child: Container(
-          // decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //         image: AssetImage('images/test.jpg'),
-          //         fit: BoxFit.cover,
-          //         colorFilter: ColorFilter.mode(
-          //             Colors.white.withOpacity(0.2), BlendMode.darken))),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('images/loginBackground2.png'),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.3), BlendMode.lighten))),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Column(

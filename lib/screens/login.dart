@@ -338,10 +338,10 @@ class _LoginState extends State<Login> {
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/test.jpg'),
+                  image: AssetImage('images/loginBackground1.jpg'),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.2), BlendMode.darken))),
+                      Colors.white.withOpacity(0.2), BlendMode.lighten))),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 10),
             child: Column(
