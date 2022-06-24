@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:test_project_emotion/screens/dashboard.dart';
 import 'package:test_project_emotion/screens/detailedJobAppliedInfo.dart';
 import 'package:test_project_emotion/screens/detailedJobInfo.dart';
@@ -53,6 +56,9 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   @override
+  PickedFile? _imageFile;
+  final ImagePicker _picker = ImagePicker();
+
   // void initState() {
   //   super.initState();
   // }
@@ -567,21 +573,50 @@ class HomePageState extends State<HomePage> {
                 padding: EdgeInsets.symmetric(vertical: 40),
                 child: Row(
                   children: [
-                    CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage("images/Emma.jpg"),
+                    SizedBox(
+                      width: 10,
                     ),
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: _imageFile == null
+                              ? AssetImage("images/User.jpg") as ImageProvider
+                              : FileImage(File(_imageFile!.path)),
+                        ),
+                        Positioned(
+                            bottom: 4,
+                            right: 2,
+                            child: InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: ((builder) => bottomSheet()),
+                                );
+                              },
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: Color.fromRGBO(50, 75, 205, 1),
+                                size: 20,
+                              ),
+                            ))
+                      ],
+                    ),
+                    // CircleAvatar(
+                    //   radius: 30,
+                    //   backgroundImage: AssetImage("images/Emma.jpg"),
+                    // ),
                     SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Pingggggzi",
+                          "Username",
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                         SizedBox(height: 4),
                         Text(
-                          "gutenachrichten1015@gmail.com",
+                          "Email address",
                           style: TextStyle(fontSize: 14, color: Colors.white),
                         ),
                       ],
@@ -684,6 +719,56 @@ class HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  Widget bottomSheet() {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 20,
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Choose Profile Photo',
+            style: TextStyle(fontSize: 18),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FlatButton.icon(
+                onPressed: () {
+                  takePhoto(ImageSource.camera);
+                },
+                icon: Icon(Icons.camera),
+                label: Text('Camera'),
+              ),
+              FlatButton.icon(
+                onPressed: () {
+                  takePhoto(ImageSource.gallery);
+                },
+                icon: Icon(Icons.image),
+                label: Text('Gallery'),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  void takePhoto(ImageSource source) async {
+    final pickedFile = await _picker.getImage(
+      source: source,
+    );
+    setState(() {
+      _imageFile = pickedFile;
+    });
   }
 
   //   Widget _buildUserAccountsDrawerHeader() {
