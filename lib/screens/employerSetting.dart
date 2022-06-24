@@ -91,8 +91,8 @@ class _EmployerSettingState extends State<EmployerSetting> {
                       size: 25,
                     ),
                     onPressed: () {
-                      // Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      //     builder: (ctx) => CompanyVerification()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (ctx) => CompanyVerification()));
                     },
                   )
                 ],

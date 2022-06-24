@@ -332,6 +332,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
       body: Form(
         key: _formKey,
