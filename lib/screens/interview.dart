@@ -6,6 +6,7 @@ import 'package:test_project_emotion/screens/homepage.dart';
 import 'package:test_project_emotion/widgets/mybutton.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
+import 'package:http/http.dart' as http;
 
 class Interview extends StatefulWidget {
   @override
@@ -47,6 +48,21 @@ class _InterviewState extends State<Interview> {
       setState(() {
         _videoFile = pickedFile;
       });
+    }
+  }
+
+  Future uploadVideo() async {
+    final uri = Uri.parse("http://10.113.64.27/uploadVideo.php");
+    final request = http.MultipartRequest('Post', uri);
+    var capturedVideo =
+        await http.MultipartFile.fromPath('Video', _videoFile!.path);
+    request.files.add(capturedVideo);
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      print('Video Upload');
+    } else {
+      print('Video Not Upload');
     }
   }
 
